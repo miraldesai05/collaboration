@@ -1,10 +1,18 @@
 package com.collaboration.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.collaboration.service.BlogService;
 
 @Controller
 public class CollaborationFunnelController {
+	
+	@Autowired(required = true)
+	private BlogService blogService;
 	
 	@RequestMapping("/")
 	public String Home()
@@ -16,6 +24,20 @@ public class CollaborationFunnelController {
 	public String Blog()
 	{
 		return "blog";
+	}
+	
+	@RequestMapping("/bloglist")
+	public String getBlogList()
+	{
+		return "bloglist";
+	}
+	
+	@RequestMapping("/blogview{blogId}")
+	public String view(@PathVariable("blogId") int blogId, Model model) {
+		System.out.println("view");
+		model.addAttribute("blog", this.blogService.get(blogId));
+		model.addAttribute("blogdetails", this.blogService.get(blogId));
+		return "viewblog";
 	}
 
 }

@@ -36,5 +36,9 @@ public class BlogService {
 	{
 		blogDAOImpl.updateBlog(blog);
 	}
+	public Blog view(int blogId)
+	{
+		return blogDAOImpl.view(blogId);
+	}
 	
 }

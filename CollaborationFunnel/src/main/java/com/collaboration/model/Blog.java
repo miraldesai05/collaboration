@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -16,6 +18,9 @@ public class Blog {
 	private String title;
 	private String description;
 	private int userId;
+	@ManyToOne
+	@JoinColumn(name="userId",insertable=false,updatable=false,nullable=false)
+	private User user;
 	
 	public int getBlogId() {
 		return blogId;
@@ -40,5 +45,15 @@ public class Blog {
 	}
 	public void setUserId(int userId) {
 		this.userId = userId;
+	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	public String toString()
+	{
+			return "{blogId:'"+ blogId +"'," + "title:'"+ title +"'," + "description:'"+ description +"'," + "userId:'"+ userId +"'}";
 	}
 }

@@ -61,7 +61,6 @@
         <div class="col-sm-10">
             <input type="text" name="title" ng-model="blogCtrl.blog.title" required class="form-control" placeholder="Enter title" /><br>
             <span ng-show="blogForm.title.$error.required" class="msg-val">Title is required.</span> 
-		</tr>
         </div>    
     </div>
     <div class="form-group">    
@@ -69,12 +68,13 @@
         <div class="col-sm-10">
             <input type="text" name="description" ng-model="blogCtrl.blog.description" required class="form-control" placeholder="Enter description" /><br>
             <span ng-show="blogForm.description.$error.required" class="msg-val">Description is required.</span> 
-		</tr>
         </div>    
     </div>
     <div class="form-group">  
+     	<label class="control-label col-sm-2">User Id:</label>
         <div class="col-sm-10">  
-            <input type="hidden" ng-model="blogCtrl.blog.userId" /><br>
+            <input type="text" name="userId" ng-model="blogCtrl.blog.userId" required class="form-control" placeholder="Enter user id" /><br>
+            <span ng-show="blogForm.userId.$error.required" class="msg-val">User id is required.</span>
         </div>    
     </div>
     <div class="form-group">  
@@ -86,7 +86,7 @@
     <div class="form-group">  
         <div class="col-sm-offset-2 col-sm-10">  
         <div ng-if="blogCtrl.flag != 'edit'">
-		       <input type="submit" ng-click="blogCtrl.addBlog()" class="btn btn-primary" value="Add Blog"/> 
+		       <input type="submit" ng-click="blogCtrl.addBlog()" class="btn btn-primary" value="Add Blog"/>
 		       <input type="button" ng-click="blogCtrl.reset()" class="btn btn-primary" value="Reset"/>
 		</div>
 		    <div ng-if="blogCtrl.flag == 'edit'">
@@ -97,7 +97,7 @@
 		 </div> 
     </div>
  </form>
-    <table class="table table-striped table-bordered">
+  <table class="table table-striped table-bordered">
         <thead>
             <tr>
             	<th>Id</th>
