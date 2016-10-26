@@ -40,5 +40,8 @@ public class UserService {
 	{
 		return userDAOImpl.view(userId);
 	}
-
+	/*public User authenticate(String username, String password)
+	{
+		return userDAOImpl.authenticate(username, password);
+	}*/
 }

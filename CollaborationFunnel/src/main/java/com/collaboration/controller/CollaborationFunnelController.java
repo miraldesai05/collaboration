@@ -39,5 +39,11 @@ public class CollaborationFunnelController {
 		model.addAttribute("blogdetails", this.blogService.get(blogId));
 		return "viewblog";
 	}
+	
+	@RequestMapping("/userpage")
+	public String User()
+	{
+		return "user";
+	}
 
 }

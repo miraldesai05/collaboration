@@ -21,6 +21,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	public void addUser(User user) {
+		user.setRole("user");
 		sessionFactory.getCurrentSession().save(user);
 	}
 
@@ -61,7 +62,9 @@ public class UserDAOImpl implements UserDAO {
 		u.setEmail(user.getEmail());
 		u.setAddress(user.getAddress());
 		u.setMobile(user.getMobile());
-		u.setRole(user.getRole());
+		u.setRole("user");
+		u.setUsername(user.getUsername());
+		u.setPassword(user.getPassword());
 		sessionFactory.getCurrentSession().update(u);
 		
 	}
@@ -80,4 +83,17 @@ public class UserDAOImpl implements UserDAO {
 		return null;
 	}
 
+	/*public User authenticate(String username, String password) {
+		
+		String hql = "from User where username=" + "'" + username + "' and " + " password='" + password + "'";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+
+		@SuppressWarnings("unchecked")
+		List<User> listUser = (List<User>) query.list();
+
+		if (listUser != null && !listUser.isEmpty()) {
+			return listUser.get(0);
+		}
+		return null;
+	}*/
 }
