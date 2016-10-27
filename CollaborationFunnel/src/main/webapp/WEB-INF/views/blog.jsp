@@ -111,9 +111,8 @@
             	<td><span ng-bind="row.blogId"></span></td>
 	        	<td><span ng-bind="row.title"></span></td>
 	         	<td><span ng-bind="row.description"></span></td>
-                <td> <a href="" ng-click="blogCtrl.editBlog(row.blogId)">edit</a> | <a href="" ng-click="blogCtrl.deleteBlog(row.blogId)">delete</a>
-                </td>
-               <span ng-if="blogCtrl.flag=='updated' && row.blogId==blogCtrl.updatedId" class="msg-success">Blog successfully updated.</span> 
+                <td> <a href="" ng-click="blogCtrl.editBlog(row.blogId)">edit</a> | <a href="" ng-click="blogCtrl.deleteBlog(row.blogId)">delete</a></td>
+                <td><span ng-if="blogCtrl.flag=='updated' && row.blogId==blogCtrl.updatedId" class="msg-success">Blog successfully updated.</span> </td>
             </tr>
         </tbody>
     </table>

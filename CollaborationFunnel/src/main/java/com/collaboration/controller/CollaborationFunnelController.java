@@ -45,5 +45,23 @@ public class CollaborationFunnelController {
 	{
 		return "user";
 	}
+	
+	@RequestMapping("/login")
+	public String Login()
+	{
+		return "login";
+	}
+	
+	@RequestMapping("/home")
+	public String home()
+	{
+		return "home";
+	}
+	
+	@RequestMapping("/eventpage")
+	public String event()
+	{
+		return "event";
+	}
 
 }
