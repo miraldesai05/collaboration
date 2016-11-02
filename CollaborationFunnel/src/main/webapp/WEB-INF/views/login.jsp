@@ -1,45 +1,83 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@page isELIgnored="false"%>
+    <%@page isELIgnored="false"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-	<style>
-	.msg-val {
-	color: red;
-	}
-	.msg-success {
-		color: green;
-	} 
-	</style>
 </head>
 <body>
-<div ng-app="Authentication" ng-controller="LoginController" class="container">
-<div class="alert alert-info">
-    Username: test<br />
-    Password: test
+<div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="#">Home</a>
+        </li>
+        <li class="active">Login</li>
+    </ul>
 </div>
-<div ng-show="error" class="alert alert-danger">{{error}}</div>
-<form name="form" ng-submit="login()" role="form">
-    <div class="form-group">
-        <label for="username">Username</label>
-        <i class="fa fa-key"></i>
-        <input type="text" name="username" id="username" class="form-control" ng-model="username" required />
-        <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Username is required</span>
-    </div>
-    <div class="form-group">
-        <label for="password">Password</label>
-        <i class="fa fa-lock"></i>
-        <input type="password" name="password" id="password" class="form-control" ng-model="password" required />
-        <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
-    </div>
-    <div class="form-actions">
-        <button type="submit" ng-disabled="form.$invalid || dataLoading" class="btn btn-danger">Login</button>
-        <img ng-if="dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
-    </div>
-</form>
+<div class="page-content">
+
+<div class="row">
+<div class="space-6"></div>
+<div class="col-sm-10 col-sm-offset-1">
+    <div id="login-box" class="login-box visible widget-box no-border">
+        <div class="widget-body">
+            <div class="widget-main">
+                <h4 class="header blue lighter bigger">
+                    <i class="icon-coffee green"></i>
+                    Login to AngularCode
+                </h4>
+
+                <div class="space-16"></div>
+
+                <form name="loginForm" class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="email"> Email / Phone </label>
+                        <div class="col-sm-7">
+                           <span class="block input-icon input-icon-right">
+                                <input type="text" class="form-control" placeholder="Email / Phone" name="email" ng-model="login.email" required focus/>
+                                <i class="ace-icon fa fa-user"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="password"> Password </label>
+                        <div class="col-sm-7">
+                           <span class="block input-icon input-icon-right">
+                                <input type="password" class="form-control" placeholder="Password" ng-model="login.password" required/>
+                                <i class="ace-icon fa fa-lock"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="space"></div>
+                     <div class="clearfix">
+                                                        <div class="row">
+                         <label class="col-sm-3 control-label no-padding-right"> </label>
+                        <div class="col-sm-7">
+                            <button type="submit" class="width-35 pull-right btn btn-sm btn-primary" ng-click="doLogin(login)" data-ng-disabled="loginForm.$invalid">
+                                <i class="ace-icon fa fa-key"></i>
+                                Login
+                            </button>
+                                                            </div>
+                        </div>
+                    </div>
+                        <div class="space-4"></div>
+                <span class="lbl col-sm-3"> </span><div class="col-sm-7">Don't have an account? <a href="#/signup">Signup</a></div>
+                </form>
+
+                
+                
+            </div><!-- /widget-main -->
+
+            
+        </div><!-- /widget-body -->
+    </div><!-- /login-box -->
+
+</div><!-- /position-relative -->
 </div>
+</div><!-- /.page-content -->
+ 
 </body>
 </html>
