@@ -80,4 +80,11 @@ public class JobDAOImpl implements JobDAO {
 		return (JobApplication)query.list();
 		
 	}
+
+	@SuppressWarnings("unchecked")
+	public List<Job> getAllJobs() {
+		String hql="from Job";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		return query.list();	
+	}
 }
