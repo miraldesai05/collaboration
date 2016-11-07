@@ -1,5 +1,91 @@
 package com.collaboration.dao;
 
-public class FriendDAOImpl {
+import java.util.List;
+
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.collaboration.model.Friend;
+
+@Repository("friendDAO")
+public class FriendDAOImpl implements FriendDAO {
+
+	@Autowired
+	private SessionFactory sessionFactory;
+	
+	public FriendDAOImpl(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
+
+	public List<Friend> getMyFriends(int userId) {
+		String hql="from Friend where userId= " + "'" + userId + "' and status = '"+" A'";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		@SuppressWarnings("unchecked")
+		List<Friend> list = (List<Friend>)query.list();
+		return list;
+	}
+
+	public Friend get(int userId, int friendId) {
+		String hql = "from Friend where userID=" + "'" + userId + "' and friendId = '"+ friendId +"'";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+
+		@SuppressWarnings("unchecked")
+		List<Friend> list = (List<Friend>) query.list();
+
+		if (list!= null && !list.isEmpty()) {
+			return list.get(0);
+		}
+		return null;
+	}
+
+	public boolean save(Friend friend) {
+		try {
+			sessionFactory.getCurrentSession().save(friend);
+			return true;
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	public boolean update(Friend friend) {
+		try {
+			sessionFactory.getCurrentSession().update(friend);
+			return true;
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	public void delete(int userId, int friendId) {
+		Friend friend=new Friend();
+		friend.setFriendId(friendId);
+		friend.setUserId(userId);
+		sessionFactory.getCurrentSession().delete(friend);
+	}
+
+	public List<Friend> getNewFriendRequests(int userId) {
+		String hql="from Friend where userId= " + "'" + userId + "' and status = '"+" N'";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		@SuppressWarnings("unchecked")
+		List<Friend> list = (List<Friend>)query.list();
+		return list;
+	}
+
+	public void setOnline(int userId) {
+		String hql="UPDATE Friend SET isOnline = 'Y' where userId='" + userId + "'";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.executeUpdate();
+	}
+
+	public void setOffline(int userId) {
+		String hql="UPDATE Friend SET isOnline = 'N' where userId='" + userId + "'";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.executeUpdate();	
+	}
 
 }

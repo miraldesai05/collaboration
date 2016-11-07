@@ -2,6 +2,8 @@ package com.collaboration.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -78,20 +80,30 @@ public class UserController {
 		return new ResponseEntity<User>(user,HttpStatus.OK);
 	}
 	
-	/*@RequestMapping(value="/user/authenticate/", method=RequestMethod.POST)
+	@RequestMapping(value="/user/authenticate/", method=RequestMethod.POST)
 	public ResponseEntity<User> authenticate(@RequestBody User user,HttpSession session)
 	{
 		user=userService.authenticate(user.getUsername(), user.getPassword());
 		if(user==null)
 		{
 			user=new User();
-			return new ResponseEntity<User>(user,HttpStatus.NOT_FOUND);
+			user.setErrorCode("404");
+			user.setErrorMessage("Invalid Credentials. Please enter valid credentials");
 		}
 		else
 		{
+			user.setErrorCode("200");
 			session.setAttribute("loggedInUser", user);
 			session.setAttribute("loggedInUserId", user.getUserId());
 		}
 		return new ResponseEntity<User>(user,HttpStatus.OK);
-	}*/
+	}
+	
+	@RequestMapping(value="/user/logout", method=RequestMethod.GET)
+	public String logout(HttpSession session)
+	{
+		/*String loggedInUserID = (String)session.getAttribute("loggedInUserId");*/
+		session.invalidate();
+		return ("you successfully loggedout");
+	}
 }

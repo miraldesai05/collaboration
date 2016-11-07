@@ -154,7 +154,7 @@
 </div>
 	<script src="resources/js/angular.min.js"></script> 
     <script src="resources/js/angular-resource.min.js"></script>  
-	<script src="resources/js/UserController.js"></script>
+	<script src="resources/app/UserController.js"></script>
     <script src="resources/js/jquery.min.js"></script>
 	<script src="resources/js/bootstrap.min.js"></script>
 </body>

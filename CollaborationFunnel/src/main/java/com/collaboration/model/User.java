@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="C_User")
-public class User {
+public class User extends BaseDomain {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

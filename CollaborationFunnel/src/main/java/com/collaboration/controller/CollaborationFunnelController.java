@@ -51,4 +51,10 @@ public class CollaborationFunnelController {
 	{
 		return "event";
 	}
+	
+	@RequestMapping("/login")
+	public String login()
+	{
+		return "login";
+	}
 }

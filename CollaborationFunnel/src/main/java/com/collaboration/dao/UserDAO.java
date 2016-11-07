@@ -12,6 +12,6 @@ public interface UserDAO {
 	public User get(int userId);
 	public void updateUser(User user);
 	public User view(int userId);
-	/*public User authenticate(String username, String password);*/
+	public User authenticate(String username, String password);
 
 }

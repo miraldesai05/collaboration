@@ -83,7 +83,7 @@ public class UserDAOImpl implements UserDAO {
 		return null;
 	}
 
-	/*public User authenticate(String username, String password) {
+	public User authenticate(String username, String password) {
 		
 		String hql = "from User where username=" + "'" + username + "' and " + " password='" + password + "'";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
@@ -95,5 +95,5 @@ public class UserDAOImpl implements UserDAO {
 			return listUser.get(0);
 		}
 		return null;
-	}*/
+	}
 }
