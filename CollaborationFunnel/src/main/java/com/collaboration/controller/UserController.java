@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.collaboration.model.User;
+import com.collaboration.service.FriendService;
 import com.collaboration.service.UserService;
 
 @RestController
@@ -21,6 +22,9 @@ public class UserController {
 	
 	@Autowired(required = true)
 	private UserService userService;
+	
+	@Autowired(required = true)
+	private FriendService friendService;
 	
 	@RequestMapping(value="/user", method=RequestMethod.GET)
 	public ResponseEntity<List<User>> listUsers(){
@@ -95,6 +99,7 @@ public class UserController {
 			user.setErrorCode("200");
 			session.setAttribute("loggedInUser", user);
 			session.setAttribute("loggedInUserId", user.getUserId());
+			friendService.setOnline(user.getUserId());
 		}
 		return new ResponseEntity<User>(user,HttpStatus.OK);
 	}
@@ -102,8 +107,9 @@ public class UserController {
 	@RequestMapping(value="/user/logout", method=RequestMethod.GET)
 	public String logout(HttpSession session)
 	{
-		/*String loggedInUserID = (String)session.getAttribute("loggedInUserId");*/
+		int loggedInUserID = (Integer)session.getAttribute("loggedInUserId");
+		friendService.setOffline(loggedInUserID);
 		session.invalidate();
-		return ("you successfully loggedout");
+		return ("you successfully logged out");
 	}
 }

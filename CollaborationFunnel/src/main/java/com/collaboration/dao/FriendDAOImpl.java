@@ -21,7 +21,7 @@ public class FriendDAOImpl implements FriendDAO {
 	}
 
 	public List<Friend> getMyFriends(int userId) {
-		String hql="from Friend where userId= " + "'" + userId + "' and status = '"+" A'";
+		String hql="from Friend where userId= " + "'" + userId + "' and status ='"+ "A'";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		@SuppressWarnings("unchecked")
 		List<Friend> list = (List<Friend>)query.list();
@@ -69,7 +69,7 @@ public class FriendDAOImpl implements FriendDAO {
 	}
 
 	public List<Friend> getNewFriendRequests(int userId) {
-		String hql="from Friend where userId= " + "'" + userId + "' and status = '"+" N'";
+		String hql="from Friend where userId= " + "'" + userId + "' and status = '"+ "N'";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		@SuppressWarnings("unchecked")
 		List<Friend> list = (List<Friend>)query.list();

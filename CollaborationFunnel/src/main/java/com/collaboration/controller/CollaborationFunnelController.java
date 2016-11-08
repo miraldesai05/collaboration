@@ -20,7 +20,7 @@ public class CollaborationFunnelController {
 		return "index";
 	}
 	
-	@RequestMapping("/blogpage")
+	/*@RequestMapping("/blogpage")
 	public String Blog()
 	{
 		return "blog";
@@ -30,7 +30,7 @@ public class CollaborationFunnelController {
 	public String getBlogList()
 	{
 		return "bloglist";
-	}
+	}*/
 	
 	@RequestMapping("/blogview{blogId}")
 	public String view(@PathVariable("blogId") int blogId, Model model) {
@@ -40,7 +40,7 @@ public class CollaborationFunnelController {
 		return "viewblog";
 	}
 	
-	@RequestMapping("/userpage")
+	/*@RequestMapping("/userpage")
 	public String User()
 	{
 		return "user";
@@ -56,5 +56,5 @@ public class CollaborationFunnelController {
 	public String login()
 	{
 		return "login";
-	}
+	}*/
 }

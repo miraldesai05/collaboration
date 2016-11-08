@@ -104,7 +104,7 @@ app.controller('UserController', ['$http','$scope','$cookieStore','User','UserSe
     	$rootScope.currentUser = {};
     	$cookieStore.remove('currentUser');
     	
-    	console.logout('calling the method logout of user service');
+    	console.log('calling the method logout of user service');
     	UserService.logout()
     	$location.path('/');	
     }

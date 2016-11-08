@@ -1,5 +1,5 @@
 'use strict';
-var app = angular.module('myApp', ['ngResource']);
+
 app.factory('Event', ['$resource', function ($resource) {
     return $resource('http://localhost:8085/CollaborationFunnel/event/:eventId', {eventId: '@eventId'},
 	{
