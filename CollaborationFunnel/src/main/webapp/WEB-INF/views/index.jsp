@@ -34,13 +34,16 @@
         <li><a href="#">Page 3</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-      <div ng-hide="currentUser">
+      <div ng-controller="UserController as ctrl">
+      <div ng-show="currentUser==''">
         <li><a href="#/userpage"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
         <li><a href="#/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       </div>
-      <div ng-show="currentUser">
-         <li><a href="#/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-      </div>     
+      <div ng-hide="currentUser==''">
+         <!-- <li><a href="#/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li> -->
+         <input type="submit" ng-click="ctrl.logout()" class="btn btn-primary" value="logout"/>
+      </div>   
+      </div>  
       </ul>
     </div>
   </div>
@@ -66,6 +69,8 @@
     <script src="resources/js/HomeController.js"></script> 
     <script src="resources/js/FriendController.js"></script> 
     <script src="resources/js/FriendService.js"></script> 
+    <script src="resources/js/ChatController.js"></script> 
+    <script src="resources/js/ChatService.js"></script> 
    
 </body>
 </html>

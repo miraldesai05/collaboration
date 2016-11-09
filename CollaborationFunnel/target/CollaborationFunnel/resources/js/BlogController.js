@@ -1,4 +1,5 @@
-var app = angular.module('myApp', ['ngResource']);
+'use strict';
+
 app.factory('Blog', ['$resource', function ($resource) {
     return $resource('http://localhost:8085/CollaborationFunnel/blog/:blogId', {blogId: '@blogId'},
 	{

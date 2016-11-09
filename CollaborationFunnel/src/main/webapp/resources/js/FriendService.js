@@ -1,6 +1,6 @@
 'use strict';
 
-app.factory('FriendService',['$http','$q','$rootScope', function($http, $q, $rootScope){
+app.factory('FriendService',['$http','$q','$rootScope',function($http, $q, $rootScope){
 	
 	consolelog("FriendService...")
 	
@@ -17,7 +17,7 @@ app.factory('FriendService',['$http','$q','$rootScope', function($http, $q, $roo
 					return $q.reject(errResponse);
 					}			
 				);
-			},
+		},
 		sendFriendRequest: function(friendId){
 			return $http.get(BASE_URL+'/addFriend/'+friendId)
 				.then(
@@ -54,4 +54,5 @@ app.factory('FriendService',['$http','$q','$rootScope', function($http, $q, $roo
 							}			
 						);
 		}
+	}
 }]);

@@ -99,15 +99,16 @@ app.controller('UserController', ['$http','$scope','$cookieStore','User','UserSe
     				function(errorResponse){
     					console.error('Error while authenticate Users');
     				});
-    }
+    };
     ob.logout = function(){
+    	console.log('logout..');
     	$rootScope.currentUser = {};
     	$cookieStore.remove('currentUser');
     	
     	console.log('calling the method logout of user service');
     	UserService.logout()
-    	$location.path('/');	
-    }
+    	$location.path('/login');	
+    };
     ob.login = function(){
     	{
     		console.log('login validation???', ob.user);

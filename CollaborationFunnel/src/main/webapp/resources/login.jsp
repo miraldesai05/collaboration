@@ -31,7 +31,7 @@
     <div class="form-group">
         <label class="control-label col-sm-2">Password:</label>
         <div class="col-sm-10">
-            <input type="text" name="password" ng-model="ctrl.user.password" required class="form-control" placeholder="Enter password" /><br>
+            <input type="password" name="password" ng-model="ctrl.user.password" required class="form-control" placeholder="Enter password" /><br>
             <span ng-show="form.password.$error.required" class="msg-val">Password is required.</span> 
         </div>    
     </div>

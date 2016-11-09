@@ -1,4 +1,5 @@
-var app = angular.module('myApp', ['ngResource']);
+'use strict';
+
 app.factory('User', ['$resource', function ($resource) {
     return $resource('http://localhost:8085/CollaborationFunnel/user/:userId', {userId: '@userId'},
 	{
@@ -6,7 +7,7 @@ app.factory('User', ['$resource', function ($resource) {
 	}
     );
 }]);
-app.controller('UserController', ['$scope', 'User','UserService','$location','$rootScope',function($scope, User, UserService, $location, $rootScope) {
+app.controller('UserController', ['$http','$scope','$cookieStore','User','UserService','$location','$rootScope',function($http,$scope,$cookieStore,User, UserService,$location, $rootScope) {
     var ob = this;
     ob.users=[];
     ob.user = new User(); 
@@ -67,7 +68,7 @@ app.controller('UserController', ['$scope', 'User','UserService','$location','$r
     }; 
     ob.authenticate = function(user){
     	console.log("authenticate...")
-    	userService
+    	UserService
     		.authenticate(user)
     		.then(
     				function(d){
@@ -82,7 +83,9 @@ app.controller('UserController', ['$scope', 'User','UserService','$location','$r
     						}else{
     							console.log("Valid credentials. Navigating to home page")
     							$rootScope.currentUser = {
-    								userId : ob.user.userId
+    								userId : ob.user.userId,
+    								username : ob.user.username,
+    								role : ob.user.role
     							};
     							$http.defaults.headers.common['Authorization'] = 'Basic'
     								+ $rootScope.currentUser;
@@ -96,7 +99,15 @@ app.controller('UserController', ['$scope', 'User','UserService','$location','$r
     				function(errorResponse){
     					console.error('Error while authenticate Users');
     				});
-    }
+    };
+    ob.logout = function(){
+    	$rootScope.currentUser = {};
+    	$cookieStore.remove('currentUser');
+    	
+    	console.log('calling the method logout of user service');
+    	UserService.logout()
+    	$location.path('/');	
+    };
     ob.login = function(){
     	{
     		console.log('login validation???', ob.user);

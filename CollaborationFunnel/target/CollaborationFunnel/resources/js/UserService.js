@@ -16,7 +16,7 @@
 					);
 				},
 				
-				authnticate: function(user){
+				authenticate: function(user){
 					console.log("Callig the method authenticate with the user :"+user)
 					return $http.post(BASE_URL+'/user/authenticate/',user)
 					.then(

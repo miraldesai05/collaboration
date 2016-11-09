@@ -14,10 +14,9 @@ var app = angular.module('app', ['ngRoute','ngResource','ngCookies']);
                 templateUrl: 'resources/login.jsp'
             })
             
-             /*.when('/logout', {
-                controller: 'UserController',
-                templateUrl: 'resources/index.jsp'	
-            })*/
+             .when('/logout', {
+                controller: 'UserController'	
+            })
             
             
            /* .when('/register', {
@@ -48,3 +47,24 @@ var app = angular.module('app', ['ngRoute','ngResource','ngCookies']);
  
            .otherwise({ redirectTo: '/' });
     });
+   
+app.run( function ($rootScope, $location,$cookieStore, $http){ 
+	
+	$rootScope.$on('$locationChangeStart', function (event, next, current) {
+        // redirect to login page if not logged in and trying to access a restricted page
+        var restrictedPage = $.inArray($location.path(), ['/','/login', '/userpage']) === -1;
+        console.log("restrictedPage:" +restrictedPage)
+        var loggedIn = $rootScope.currentUser.userId;
+        console.log("loggedIn:" +loggedIn)
+        if (restrictedPage && !loggedIn) {
+        	console.log("Navigating to login page")
+            $location.path('/login');
+        }
+    });
+	
+    // keep user logged in after page refresh
+    $rootScope.currentUser = $cookieStore.get('currentUser') || {};
+    if ($rootScope.currentUser) {
+        $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.currentUser; 
+    }
+});
