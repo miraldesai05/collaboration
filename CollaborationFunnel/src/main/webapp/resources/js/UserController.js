@@ -12,7 +12,12 @@ app.controller('UserController', ['$http','$scope','$cookieStore','User','UserSe
     ob.users=[];
     ob.user = new User(); 
     ob.fetchAllUsers = function(){
-        ob.users = User.query();
+        /*ob.users = User.query();*/
+    	UserService.fetchAllUsers().then(function(d){
+   				ob.users = d;
+   			},function(errResponse){
+   				console.error('Error while fetching users');
+    	});
     };
     ob.fetchAllUsers();
     ob.addUser = function(){

@@ -44,6 +44,11 @@ var app = angular.module('app', ['ngRoute','ngResource','ngCookies']);
                 controller: 'EventController',
                 templateUrl: 'resources/event.jsp'
             })
+            
+            .when('/friend', {
+                controller: 'FriendController',
+                templateUrl: 'resources/viewfriend.jsp'
+            })
  
            .otherwise({ redirectTo: '/' });
     });

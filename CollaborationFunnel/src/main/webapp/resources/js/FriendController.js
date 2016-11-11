@@ -1,6 +1,6 @@
 'use strict';
-
-app.controller('FriendController', ['UserController','$scope','FriendService','$location','$rootScope',function(UserController,$scope,FriendService,$location, $rootScope){
+/*app.controller('UserController', function(){})*/
+app.controller('FriendController', ['$scope','FriendService','UserService','$location','$rootScope',function($scope,FriendService,UserService,$location, $rootScope){
 	console.log("FriendController...")
 	var ob = this;
 	ob.friend={id:'',userId:'',friendId:'',status:''};
@@ -68,14 +68,14 @@ app.controller('FriendController', ['UserController','$scope','FriendService','$
 				);
 	};
 	ob.fetchAllUsers = function(){
-		UserContoller.fetchAllUsers().then(function(d){
+		UserService.fetchAllUsers().then(function(d){
 			ob.users = d;
 		}, function(errResponse){
 			console.error('Error while fetching users');
 		});
 	};
 	
-	ob.fetAllUsers();
+	ob.fetchAllUsers();
 	ob.getMyFriends();
 	
 	

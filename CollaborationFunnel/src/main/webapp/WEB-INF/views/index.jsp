@@ -31,7 +31,7 @@
           </ul>
         </li>
         <li><a href="#/eventpage">Event</a></li>
-        <li><a href="#">Page 3</a></li>
+        <li><a href="#/friend">view friend</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
       <div ng-controller="UserController as ctrl">

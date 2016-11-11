@@ -2,7 +2,7 @@
 
 app.factory('FriendService',['$http','$q','$rootScope',function($http, $q, $rootScope){
 	
-	consolelog("FriendService...")
+	console.log("FriendService...")
 	
 	var BASE_URL='http://localhost:8085/CollaborationFunnel'
 		return{
@@ -19,7 +19,7 @@ app.factory('FriendService',['$http','$q','$rootScope',function($http, $q, $root
 				);
 		},
 		sendFriendRequest: function(friendId){
-			return $http.get(BASE_URL+'/addFriend/'+friendId)
+			return $http.post(BASE_URL+'/addFriend/'+friendId)
 				.then(
 						function(response){
 							return response.data;
