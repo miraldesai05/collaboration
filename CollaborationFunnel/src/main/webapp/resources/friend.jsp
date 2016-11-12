@@ -7,22 +7,20 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 <div class="container" ng-controller="FriendController as ctrl">
 <div class="form-group has-feedback"></div>
-Search 
+Search for friend
 <p><input type="text" ng-model="sear_text"></p>
-<div ng-repeat="user in ctrl.users | filter: sear_text">
+<input type="submit" ng-click="ctrl.getMyFriendRequests()" class="btn btn-primary" value="Friend request"/>
+<div ng-repeat="friend in ctrl.friend | filter: sear_text">
 <fieldset>
 <legend></legend>
-<p>Online ?: {{user.isOnline}}
-<p>ID: {{user.userId}} &nbsp;&nbsp;&nbsp;Name: {{user.name}}
-&nbsp;&nbsp;&nbsp; <button type="button" ng-click="ctrl.sendFriendRequest(user.userId)"
-class="btn btn-warning">Accept Friend Request</button>
-</p>
-<p>Email:{{user.email}} &nbsp;&nbsp;&nbsp;Mobile:{{user.mobile}}</p>
-<p>Address:{{user.address}} &nbsp;&nbsp;&nbsp; Role:{{user.role}}
+<p>UserId: {{friend.userId}}&nbsp;&nbsp;&nbsp;Status: {{friend.status}}
+<input type="submit" ng-click="ctrl.acceptFriendRequest(friend.friendId)" class="btn btn-warning" value="Accept Friend request"/>
+<input type="submit" ng-click="ctrl.getMyFriendRequests()" class="btn btn-danger" value="Reject Friend request"/>
 </fieldset>
 </div>
-</div>
+</div> 
 </body>
 </html>

@@ -40,12 +40,12 @@ public class FriendService {
 	{
 		return friendDAOImpl.getNewFriendRequests(userId);
 	}
-	public void setOnline(int userId)
+	public void setOnline(int friendId)
 	{
-		friendDAOImpl.setOnline(userId);
+		friendDAOImpl.setOnline(friendId);
 	}
-	public void setOffline(int userId)
+	public void setOffline(int friendId)
 	{
-		friendDAOImpl.setOffline(userId);
+		friendDAOImpl.setOffline(friendId);
 	}
 }

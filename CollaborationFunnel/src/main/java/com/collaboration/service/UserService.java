@@ -44,4 +44,12 @@ public class UserService {
 	{
 		return userDAOImpl.authenticate(username, password);
 	}
+	public void setOnline(int userId)
+	{
+		userDAOImpl.setOnline(userId);
+	}
+	public void setOffline(int userId)
+	{
+		userDAOImpl.setOffline(userId);
+	}
 }

@@ -34,21 +34,48 @@ app.controller('FriendController', ['$scope','FriendService','UserService','$loc
 		   				console.error('Error while sending friend request');
 		   			}
 		   			);
-	}
-	
+	};
+	ob.acceptFriendRequest=acceptFriendRequest
+	function acceptFriendRequest(friendId)
+	{
+		console.log("->acceptFriendRequest :"+friendId)
+		   FriendService.acceptFriendRequest(friendId)
+		   	.then(
+		   			function(d){
+		   				ob.friend = d;
+		   				/*alert("Friend request sent")*/
+		   			},
+		   			function(errResponse){
+		   				console.error('Error while accepting friend request');
+		   			}
+		   			);
+	};
 	ob.getMyFriends = function(){
 		console.log("Getting my friends")
 		FriendService.getMyFriends()
 			.then(
 					function(d){
 		   				ob.friend = d;
-		   				alert("get my friends")
+		   				/*alert("get my friends")*/
 		   			},
 		   			function(errResponse){
 		   				console.error('Error while getting my friends');
 		   			}	
 				);
-	}
+	};
+	ob.getMyFriendRequests = function(){
+		console.log("Getting my friend requests")
+		FriendService.getMyFriendRequests()
+			.then(
+					function(d){
+		   				ob.friend = d;
+		   				/*alert("get my friend requests")*/
+		   			},
+		   			function(errResponse){
+		   				console.error('Error while getting my friend requests');
+		   			}	
+				);
+	};
 	ob.updateFriendRequest = function(friend, id){
 		FriendService.updateFriendRequest(friend, id)
 			.then(

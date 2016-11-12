@@ -68,22 +68,22 @@ public class FriendDAOImpl implements FriendDAO {
 		sessionFactory.getCurrentSession().delete(friend);
 	}
 
-	public List<Friend> getNewFriendRequests(int userId) {
-		String hql="from Friend where userId= " + "'" + userId + "' and status = '"+ "N'";
+	public List<Friend> getNewFriendRequests(int friendId) {
+		String hql="from Friend where friendId= " + "'" + friendId + "' and status = '"+ "N'";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		@SuppressWarnings("unchecked")
 		List<Friend> list = (List<Friend>)query.list();
 		return list;
 	}
 
-	public void setOnline(int userId) {
-		String hql="UPDATE Friend SET isOnline = 'Y' where userId='" + userId + "'";
+	public void setOnline(int friendId) {
+		String hql="UPDATE Friend SET isOnline = 'Y' where friendId='" + friendId + "'";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		query.executeUpdate();
 	}
 
-	public void setOffline(int userId) {
-		String hql="UPDATE Friend SET isOnline = 'N' where userId='" + userId + "'";
+	public void setOffline(int friendId) {
+		String hql="UPDATE Friend SET isOnline = 'N' where friendId='" + friendId + "'";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		query.executeUpdate();	
 	}

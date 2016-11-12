@@ -38,6 +38,7 @@ public class FriendController {
 		int loggedInUserID = (Integer)session.getAttribute("loggedInUserId");
 		friend.setUserId(loggedInUserID);
 		friend.setFriendId(friendId);
+		friend.setIsOnline('N');
 		friend.setStatus("N");
 		friendService.save(friend);
 		return new ResponseEntity<Friend>(friend, HttpStatus.OK);		

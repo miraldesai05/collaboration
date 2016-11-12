@@ -41,6 +41,7 @@ public class UserController {
 		
 		if(userService.get(user.getUserId())== null)
 		{
+			user.setIsOnline('N');
 			userService.addUser(user);
 			return new ResponseEntity<User>(user,HttpStatus.OK);
 		}
@@ -100,6 +101,7 @@ public class UserController {
 			session.setAttribute("loggedInUser", user);
 			session.setAttribute("loggedInUserId", user.getUserId());
 			friendService.setOnline(user.getUserId());
+			userService.setOnline(user.getUserId());
 		}
 		return new ResponseEntity<User>(user,HttpStatus.OK);
 	}
@@ -109,6 +111,7 @@ public class UserController {
 	{
 		int loggedInUserID = (Integer)session.getAttribute("loggedInUserId");
 		friendService.setOffline(loggedInUserID);
+		userService.setOffline(loggedInUserID);
 		session.invalidate();
 		return ("you successfully logged out");
 	}

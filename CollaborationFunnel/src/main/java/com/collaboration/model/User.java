@@ -20,6 +20,7 @@ public class User extends BaseDomain {
 	private String role;
 	private String username;
 	private String password;
+	private char isOnline;
 	
 	public int getUserId() {
 		return userId;
@@ -68,5 +69,11 @@ public class User extends BaseDomain {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public char getIsOnline() {
+		return isOnline;
+	}
+	public void setIsOnline(char isOnline) {
+		this.isOnline = isOnline;
 	}
 }

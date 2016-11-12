@@ -11,10 +11,10 @@
 <div class="form-group has-feedback"></div>
 Search for friend
 <p><input type="text" ng-model="sear_text"></p>
-<div ng-repeat="friend in ctrl.friends | filter: sear_text">
+<div ng-repeat="friend in ctrl.friend | filter: sear_text">
 <fieldset>
 <legend></legend>
-<p>Name: {{friend.name}} &nbsp;&nbsp;&nbsp;Status: {{friend.status}}
+<p>Id: {{friend.friendId}} &nbsp;&nbsp;&nbsp;Status: {{friend.status}}
 <a href="#/chat">Send Message</a>
 </fieldset>
 </div>

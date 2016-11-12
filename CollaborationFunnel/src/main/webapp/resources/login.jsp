@@ -36,6 +36,7 @@
         </div>    
     </div>
      <input type="submit" class="btn btn-primary" value="Login"/>
+     <a href="#/userpage"><span class="glyphicon glyphicon-user"></span> Sign Up</a>
 		</form>
 	</span>
 </div>

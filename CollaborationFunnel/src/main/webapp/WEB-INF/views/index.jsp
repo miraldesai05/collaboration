@@ -31,7 +31,15 @@
           </ul>
         </li>
         <li><a href="#/eventpage">Event</a></li>
-        <li><a href="#/friend">view friend</a></li>
+        <!-- <li><a href="#/friend">view friend</a></li> -->
+         <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Friend<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#/friend">View friends</a></li>
+            <li><a href="#/friendrequest">Friend request</a></li>
+          <!--   <li><a href="#">Page 1-3</a></li> -->
+          </ul>
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
       <div ng-controller="UserController as ctrl">
