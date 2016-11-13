@@ -54,6 +54,30 @@ app.factory('FriendService',['$http','$q','$rootScope',function($http, $q, $root
 						}			
 					);
 		},
+		rejectFriendRequest: function(friendId){
+			return $http.get(BASE_URL+'/rejectFriend/'+friendId)
+			.then(
+					function(response){
+						return response.data;
+					},
+					function(errResponse){
+						console.error('Error while rejecting friend request');
+						return $q.reject(errResponse);
+						}			
+					);
+		},
+		unFriend: function(friendId){
+			return $http.get(BASE_URL+'/unFriend/'+friendId)
+			.then(
+					function(response){
+						return response.data;
+					},
+					function(errResponse){
+						console.error('Error while unfriend');
+						return $q.reject(errResponse);
+						}			
+					);
+		},
 		updateFriendRequest: function(friend, id){
 			return $http.put(BASE_URL+'/friend/'+id, friend)
 				.then(

@@ -14,7 +14,8 @@ Search for friend
 <div ng-repeat="friend in ctrl.friend | filter: sear_text">
 <fieldset>
 <legend></legend>
-<p>Id: {{friend.friendId}} &nbsp;&nbsp;&nbsp;Status: {{friend.status}}
+<p>friend Id: {{friend.friendId}} &nbsp;&nbsp;&nbsp;Status: {{friend.status}}
+<input type="submit" ng-click="ctrl.unFriend(friend.friendId)" class="btn btn-warning" value="unfriend"/>
 <a href="#/chat">Send Message</a>
 </fieldset>
 </div>

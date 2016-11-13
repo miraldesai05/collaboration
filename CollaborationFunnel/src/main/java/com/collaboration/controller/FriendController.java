@@ -48,8 +48,9 @@ public class FriendController {
 	public ResponseEntity<Friend> unFriend(@PathVariable("friendId") int friendId, HttpSession session)
 	{
 		int loggedInUserID = (Integer)session.getAttribute("loggedInUserId");
-		friend.setUserId(loggedInUserID);
-		friend.setFriendId(friendId);
+		/*friend.setUserId(loggedInUserID);*/
+		friend.setFriendId(loggedInUserID);
+		friend.setIsOnline('Y');
 		friend.setStatus("U");
 		friendService.update(friend);
 		return new ResponseEntity<Friend>(friend, HttpStatus.OK);		
@@ -59,8 +60,9 @@ public class FriendController {
 	public ResponseEntity<Friend> rejectFriendRequest(@PathVariable("friendId") int friendId, HttpSession session)
 	{
 		int loggedInUserID = (Integer)session.getAttribute("loggedInUserId");
-		friend.setUserId(loggedInUserID);
-		friend.setFriendId(friendId);
+		/*friend.setUserId(loggedInUserID);*/
+		friend.setFriendId(loggedInUserID);
+		friend.setIsOnline('Y');
 		friend.setStatus("R");
 		friendService.update(friend);
 		return new ResponseEntity<Friend>(friend, HttpStatus.OK);		
@@ -78,8 +80,9 @@ public class FriendController {
 	public ResponseEntity<Friend> acceptFriendRequest(@PathVariable("friendId") int friendId, HttpSession session)
 	{
 		int loggedInUserID = (Integer)session.getAttribute("loggedInUserId");
-		friend.setUserId(loggedInUserID);
-		friend.setFriendId(friendId);
+		/*friend.setUserId(loggedInUserID);*/
+		friend.setFriendId(loggedInUserID);
+		friend.setIsOnline('Y');
 		friend.setStatus("A");
 		friendService.update(friend);
 		return new ResponseEntity<Friend>(friend, HttpStatus.OK);		

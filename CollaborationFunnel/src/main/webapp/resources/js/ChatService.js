@@ -17,14 +17,14 @@ app.service("ChatService", function($q, $timeout){
 	
 	service.send = function(message) {
 		console.log("send")
-	var id = Math.floor(Math.random * 1000000);
+	var id = Math.floor(Math.random() * 1000000);
 	socket.stomp.send(service.CHAT_BROKER, {
 		priority: 9
 	}, JSON.stringify({
 		message: message,
 		id: id
 	}));
-	messageids.push(id);
+	messageIds.push(id);
 	};
 	
 	var reconnect = function(){

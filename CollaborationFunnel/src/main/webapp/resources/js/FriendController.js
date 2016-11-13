@@ -50,6 +50,36 @@ app.controller('FriendController', ['$scope','FriendService','UserService','$loc
 		   			}
 		   			);
 	};
+	ob.rejectFriendRequest=rejectFriendRequest
+	function rejectFriendRequest(friendId)
+	{
+		console.log("->rejectFriendRequest :"+friendId)
+		   FriendService.rejectFriendRequest(friendId)
+		   	.then(
+		   			function(d){
+		   				ob.friend = d;
+		   				/*alert("Friend request sent")*/
+		   			},
+		   			function(errResponse){
+		   				console.error('Error while rejecting friend request');
+		   			}
+		   			);
+	};
+	ob.unFriend=unFriend
+	function unFriend(friendId)
+	{
+		console.log("->unFriend :"+friendId)
+		   FriendService.unFriend(friendId)
+		   	.then(
+		   			function(d){
+		   				ob.friend = d;
+		   				/*alert("Friend request sent")*/
+		   			},
+		   			function(errResponse){
+		   				console.error('Error while unfriend');
+		   			}
+		   			);
+	};
 	ob.getMyFriends = function(){
 		console.log("Getting my friends")
 		FriendService.getMyFriends()

@@ -99,7 +99,7 @@ app.controller('UserController', ['$http','$scope','$cookieStore','User','UserSe
     										'currentUser',
     										$rootScope.currentUser);
     							$location.path('/');
-    						}		
+    						}	
     				},
     				function(errorResponse){
     					console.error('Error while authenticate Users');
