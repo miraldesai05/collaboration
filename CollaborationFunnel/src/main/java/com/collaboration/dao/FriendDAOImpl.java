@@ -88,4 +88,12 @@ public class FriendDAOImpl implements FriendDAO {
 		query.executeUpdate();	
 	}
 
+	public List<Friend> getMyFriend(int friendId) {
+		String hql="from Friend where friendId= " + "'" + friendId + "' and status ='"+ "A'";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		@SuppressWarnings("unchecked")
+		List<Friend> list = (List<Friend>)query.list();
+		return list;
+	}
+
 }

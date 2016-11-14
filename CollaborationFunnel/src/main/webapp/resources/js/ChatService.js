@@ -33,13 +33,17 @@ app.service("ChatService", function($q, $timeout){
 			initialize();
 		}, this.RECONNECT_TIMEOUT);
 	};
-	var getMessage = function(data){
-		console.log("getMessage")
-	var message = JSON.parse(data), out = {};
-		out.message = message.message;
-		out.time = new Date(message.time);
-		return out;
-	};
+	 var getMessage = function(data) {
+	      var message = JSON.parse(data), out = {};
+	      out.message = message.message;
+	      out.username=message.username;
+	      out.time = new Date(message.time);
+	      if (_.contains(messageIds, message.id)) {
+	        out.self = true;
+	        messageIds = _.remove(messageIds, message.id);
+	      }
+	      return out;
+	    };
 	
 	var startListener = function(){
 		console.log("receive")

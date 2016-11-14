@@ -18,6 +18,18 @@ app.factory('FriendService',['$http','$q','$rootScope',function($http, $q, $root
 					}			
 				);
 		},
+		getMyFriend: function(){
+			return $http.get(BASE_URL+'/myFriend')
+			.then(
+				function(response){
+					return response.data;
+				},
+				function(errResponse){
+					console.error('Error while fetching friend');
+					return $q.reject(errResponse);
+					}			
+				);
+		},
 		getMyFriendRequests: function(){
 			return $http.get(BASE_URL+'/getMyFriendRequests/')
 			.then(

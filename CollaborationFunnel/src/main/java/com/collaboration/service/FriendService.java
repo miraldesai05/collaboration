@@ -48,4 +48,8 @@ public class FriendService {
 	{
 		friendDAOImpl.setOffline(friendId);
 	}
+	public List<Friend> getMyFriend(int friendId)
+	{
+		return friendDAOImpl.getMyFriend(friendId);
+	}
 }

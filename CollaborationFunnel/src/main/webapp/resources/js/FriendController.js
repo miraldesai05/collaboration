@@ -93,6 +93,19 @@ app.controller('FriendController', ['$scope','FriendService','UserService','$loc
 		   			}	
 				);
 	};
+	ob.getMyFriend = function(){
+		console.log("Getting my friend")
+		FriendService.getMyFriend()
+			.then(
+					function(d){
+		   				ob.friend = d;
+		   				/*alert("get my friends")*/
+		   			},
+		   			function(errResponse){
+		   				console.error('Error while getting my friend');
+		   			}	
+				);
+	};
 	ob.getMyFriendRequests = function(){
 		console.log("Getting my friend requests")
 		FriendService.getMyFriendRequests()

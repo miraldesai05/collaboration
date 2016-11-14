@@ -19,6 +19,7 @@ Search for friend
 <a href="#/chat">Send Message</a>
 </fieldset>
 </div>
-</div>
+</div>  
+<%@ include file="/resources/fri.jsp"%> 
 </body>
 </html>

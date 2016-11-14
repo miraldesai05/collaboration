@@ -18,7 +18,8 @@
 </hr>
 <p ng-repeat="message in messages | orderBy:'time':true" class="message">
 <time>{{message.time | date:'HH:mm'}}</time>
-<span ng-class="{ob: message.ob}">{{message.message}}</span>
+<span ng-class="{self: message.self}">{{message.message}}</span>
+</p>
 </div>
 </body>
 </html>

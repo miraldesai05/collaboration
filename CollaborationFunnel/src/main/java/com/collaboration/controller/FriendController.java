@@ -88,6 +88,14 @@ public class FriendController {
 		return new ResponseEntity<Friend>(friend, HttpStatus.OK);		
 	}
 	
+	@RequestMapping(value="/myFriend", method=RequestMethod.GET)
+	public ResponseEntity<List<Friend>> getMyFriend(HttpSession session)
+	{
+		int loggedInUserID = (Integer)session.getAttribute("loggedInUserId");
+		List<Friend> myFriend = friendService.getMyFriend(loggedInUserID);
+		return new ResponseEntity<List<Friend>>(myFriend, HttpStatus.OK);
+	}
+	
 	/*@RequestMapping(value="/myFriends/{id}", method=RequestMethod.GET)
 	public ResponseEntity<List<Friend>> getMyFriendsTemp(@PathVariable("id") int id)
 	{
