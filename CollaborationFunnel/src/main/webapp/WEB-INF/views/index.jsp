@@ -70,8 +70,11 @@
     <script src="resources/js/angular-route.js"></script> 
     <script src="resources/js/angular-cookies.js"></script> 
     
-    <script src="resources/js/sockjs.js"></script> 
+    <!-- <script src="resources/js/sockjs.js"></script>  -->
+    <script src="resources/js/sockjs.min.js"></script> 
     <script src="resources/js/stomp.js"></script> 
+    <script src="resources/js/stomp.min.js"></script> 
+    <script src="resources/lodash/dist/lodash.min.js"></script>
     
     <script src="resources/js/app.js"></script>
     <script src="resources/js/UserController.js"></script> 

@@ -7,7 +7,7 @@ app.service("ChatService", function($q, $timeout){
 	
 	service.RECONNECT_TIMEOUT = 30000;
 	service.SOCKET_URL = "/CollaborationFunnel/chat";
-	service.CHAT_TOPIC = "topic/message";
+	service.CHAT_TOPIC = "/topic/message";
 	service.CHAT_BROKER = "/app/chat";
 	
 	service.receive = function(){
@@ -36,15 +36,14 @@ app.service("ChatService", function($q, $timeout){
 	 var getMessage = function(data) {
 	      var message = JSON.parse(data), out = {};
 	      out.message = message.message;
-	      out.username=message.username;
 	      out.time = new Date(message.time);
 	      if (_.contains(messageIds, message.id)) {
 	        out.self = true;
 	        messageIds = _.remove(messageIds, message.id);
 	      }
 	      return out;
-	    };
-	
+	};
+
 	var startListener = function(){
 		console.log("receive")
 		socket.stomp.subscribe(service.CHAT_TOPIC, function(data){
