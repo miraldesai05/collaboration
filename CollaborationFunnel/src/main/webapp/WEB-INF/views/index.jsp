@@ -43,18 +43,14 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
       <div ng-controller="UserController as ctrl">
-      <!-- <div ng-if="ctrl.user.username==''"> -->
-      <div ng-hide="currentUser==''">
+    <div ng-hide="currentUser.username!==ctrl.user.username"> 
         <li><a href="#/userpage"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
         <li><a href="#/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       </div>
-      <!-- </div> -->
-     <!--  <div ng-if="ctrl.user.username!=''"> -->
-      <div ng-hide="currentUser==''">
+      <div ng-hide="currentUser.username===ctrl.user.username">
          <!-- <li><a href="#/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li> -->
          <input type="submit" ng-click="ctrl.logout()" class="btn btn-primary" value="logout"/>
       </div>
-     <!--  </div> -->
       </div>  
       </ul>
     </div>

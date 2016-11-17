@@ -23,19 +23,21 @@
 		<form class="form-horizontal" name="form" ng-submit="ctrl.login()" role="form" method="POST">
 	<div class="form-group">
         <label class="control-label col-sm-2">Username:</label>
-        <div class="col-sm-10">
+        <div class="col-sm-5">
             <input type="text" name="username" ng-model="ctrl.user.username" required class="form-control" placeholder="Enter username" /><br>
             <span ng-show="form.username.$error.required" class="msg-val">Username is required.</span> 
         </div>    
     </div>
     <div class="form-group">
         <label class="control-label col-sm-2">Password:</label>
-        <div class="col-sm-10">
-            <input type="text" name="password" ng-model="ctrl.user.password" required class="form-control" placeholder="Enter password" /><br>
+        <div class="col-sm-5">
+            <input type="password" name="password" ng-model="ctrl.user.password" required class="form-control" placeholder="Enter password" /><br>
             <span ng-show="form.password.$error.required" class="msg-val">Password is required.</span> 
         </div>    
     </div>
      <input type="submit" class="btn btn-primary" value="Login"/>
+     <a href="#/userpage"><input type="submit" class="btn btn-primary" value="Register"/></a>
+     
 		</form>
 	</span>
 </div>

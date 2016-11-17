@@ -1,6 +1,6 @@
 'use strict';
-
-app.controller('FriendController', ['UserController','$scope','FriendService','$location','$rootScope',function(UserController,$scope,FriendService,$location, $rootScope){
+/*app.controller('UserController', function(){})*/
+app.controller('FriendController', ['$scope','FriendService','UserService','$location','$rootScope',function($scope,FriendService,UserService,$location, $rootScope){
 	console.log("FriendController...")
 	var ob = this;
 	ob.friend={id:'',userId:'',friendId:'',status:''};
@@ -34,23 +34,93 @@ app.controller('FriendController', ['UserController','$scope','FriendService','$
 		   				console.error('Error while sending friend request');
 		   			}
 		   			);
-	}
-	
+	};
+	ob.acceptFriendRequest=acceptFriendRequest
+	function acceptFriendRequest(friendId,friend)
+	{
+		console.log("->acceptFriendRequest :"+friendId)
+		   FriendService.acceptFriendRequest(friendId, friend)
+		   	.then(
+		   			function(d){
+		   				ob.friend = d;
+		   				/*alert("Friend request sent")*/
+		   			},
+		   			function(errResponse){
+		   				console.error('Error while accepting friend request');
+		   			}
+		   			);
+	};
+	ob.rejectFriendRequest=rejectFriendRequest
+	function rejectFriendRequest(friendId)
+	{
+		console.log("->rejectFriendRequest :"+friendId)
+		   FriendService.rejectFriendRequest(friendId)
+		   	.then(
+		   			function(d){
+		   				ob.friend = d;
+		   				/*alert("Friend request sent")*/
+		   			},
+		   			function(errResponse){
+		   				console.error('Error while rejecting friend request');
+		   			}
+		   			);
+	};
+	ob.unFriend=unFriend
+	function unFriend(friendId)
+	{
+		console.log("->unFriend :"+friendId)
+		   FriendService.unFriend(friendId)
+		   	.then(
+		   			function(d){
+		   				ob.friend = d;
+		   				/*alert("Friend request sent")*/
+		   			},
+		   			function(errResponse){
+		   				console.error('Error while unfriend');
+		   			}
+		   			);
+	};
 	ob.getMyFriends = function(){
 		console.log("Getting my friends")
 		FriendService.getMyFriends()
 			.then(
 					function(d){
 		   				ob.friend = d;
-		   				alert("get my friends")
+		   				/*alert("get my friends")*/
 		   			},
 		   			function(errResponse){
 		   				console.error('Error while getting my friends');
 		   			}	
 				);
-	}
-	ob.updateFriendRequest = function(friend, id){
-		FriendService.updateFriendRequest(friend, id)
+	};
+	ob.getMyFriend = function(){
+		console.log("Getting my friend")
+		FriendService.getMyFriend()
+			.then(
+					function(d){
+		   				ob.friend = d;
+		   				/*alert("get my friends")*/
+		   			},
+		   			function(errResponse){
+		   				console.error('Error while getting my friend');
+		   			}	
+				);
+	};
+	ob.getMyFriendRequests = function(){
+		console.log("Getting my friend requests")
+		FriendService.getMyFriendRequests()
+			.then(
+					function(d){
+		   				ob.friend = d;
+		   				/*alert("get my friend requests")*/
+		   			},
+		   			function(errResponse){
+		   				console.error('Error while getting my friend requests');
+		   			}	
+				);
+	};
+	ob.updateFriendRequest = function(id, friend){
+		FriendService.updateFriendRequest(id, friend)
 			.then(
 					ob.fetAllFriends,
 					function(errResponse){
@@ -68,14 +138,14 @@ app.controller('FriendController', ['UserController','$scope','FriendService','$
 				);
 	};
 	ob.fetchAllUsers = function(){
-		UserContoller.fetchAllUsers().then(function(d){
+		UserService.fetchAllUsers().then(function(d){
 			ob.users = d;
 		}, function(errResponse){
 			console.error('Error while fetching users');
 		});
 	};
 	
-	ob.fetAllUsers();
+	ob.fetchAllUsers();
 	ob.getMyFriends();
 	
 	

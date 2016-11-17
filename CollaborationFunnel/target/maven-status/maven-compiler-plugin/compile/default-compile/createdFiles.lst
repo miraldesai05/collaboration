@@ -21,6 +21,7 @@ com\collaboration\controller\CollaborationFunnelController.class
 com\collaboration\model\BaseDomain.class
 com\collaboration\service\FriendService.class
 com\collaboration\dao\BlogDAOImpl.class
+com\collaboration\controller\ChatController.class
 com\collaboration\service\EventService.class
 com\collaboration\dao\EventDAOImpl.class
 com\collaboration\controller\UserController.class

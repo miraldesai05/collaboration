@@ -54,8 +54,8 @@ app.factory('FriendService',['$http','$q','$rootScope',function($http, $q, $root
 							}			
 						);
 		},
-		acceptFriendRequest: function(friendId){
-			return $http.get(BASE_URL+'/acceptFriend/'+friendId)
+		acceptFriendRequest: function(userId){
+			return $http.get(BASE_URL+'/acceptFriend/'+userId)
 			.then(
 					function(response){
 						return response.data;
@@ -90,7 +90,7 @@ app.factory('FriendService',['$http','$q','$rootScope',function($http, $q, $root
 						}			
 					);
 		},
-		updateFriendRequest: function(friend, id){
+		updateFriendRequest: function(id, friend){
 			return $http.put(BASE_URL+'/friend/'+id, friend)
 				.then(
 						function(response){

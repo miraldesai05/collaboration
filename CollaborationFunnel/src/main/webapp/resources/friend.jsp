@@ -17,8 +17,8 @@ Search for friend
 <fieldset>
 <legend></legend>
 <p>UserId: {{friend.userId}}&nbsp;&nbsp;&nbsp;Status: {{friend.status}}
-<input type="submit" ng-click="ctrl.acceptFriendRequest(friend.friendId)" class="btn btn-warning" value="Accept Friend request"/>
-<input type="submit" ng-click="ctrl.rejectFriendRequest(friend.friendId)" class="btn btn-danger" value="Reject Friend request"/>
+<input type="submit" ng-click="ctrl.acceptFriendRequest(friend.id)" class="btn btn-warning" value="Accept Friend request"/>
+<input type="submit" ng-click="ctrl.rejectFriendRequest(friend.userId)" class="btn btn-danger" value="Reject Friend request"/>
 </fieldset>
 </div>
 </div> 

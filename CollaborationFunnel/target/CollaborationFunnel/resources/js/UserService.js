@@ -5,6 +5,17 @@
 		
 		var BASE_URL = 'http://localhost:8085/CollaborationFunnel'
 			return{
+			
+			fetchAllUsers: function(){
+				return $http.get(BASE_URL+'/user')
+				.then(
+					function(response){
+						return response.data;
+					},
+					null
+				);
+			}, 
+			
 				logout: function(){
 					console.log('logout....')
 					return $http.get(BASE_URL+'/user/logout')

@@ -24,13 +24,13 @@ public class FriendService {
 	{
 		return friendDAOImpl.get(userId, friendId);
 	}
-	public boolean save(Friend friend)
+	public void save(Friend friend)
 	{
-		return friendDAOImpl.save(friend);
+		friendDAOImpl.save(friend);
 	}
-	public boolean update(Friend friend)
+	public void update(Friend friend)
 	{
-		return friendDAOImpl.update(friend);
+		friendDAOImpl.update(friend);
 	}
 	public void delete(int userId,int friendId)
 	{
@@ -51,5 +51,9 @@ public class FriendService {
 	public List<Friend> getMyFriend(int friendId)
 	{
 		return friendDAOImpl.getMyFriend(friendId);
+	}
+	public Friend get(int id)
+	{
+		return friendDAOImpl.get(id);
 	}
 }

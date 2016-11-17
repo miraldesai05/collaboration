@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('HomeController', ['$scope','UserService','$location','$rootScope',function($scope,UserService,$location,$rootScope) {
+app.controller('HomeController', ['$scope','UserService','$rootScope',function($scope,UserService,$rootScope) {
 	
 	console.log("HomeController....");
 	
@@ -17,9 +17,7 @@ app.controller('HomeController', ['$scope','UserService','$location','$rootScope
 			}
 		console.log("User is logged in")
 		return $rootScope.currentUser;
-		$location.path('/logout');
 	}
 	
 	ob.getCurrentUser();
-	
 }]);

@@ -9,8 +9,9 @@ public interface FriendDAO {
 	public List<Friend> getMyFriends(int userId);
 	public List<Friend> getMyFriend(int friendId);
 	public Friend get(int userId,int friendId);
-	public boolean save(Friend friend);
-	public boolean update(Friend friend);
+	public Friend get(int id);
+	public void save(Friend friend);
+	public void update(Friend friend);
 	public void delete(int userId,int friendId);
 	public List<Friend> getNewFriendRequests(int friendId);
 	public void setOnline(int friendId);

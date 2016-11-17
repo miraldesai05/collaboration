@@ -2,7 +2,6 @@ package com.collaboration.dao;
 
 import java.util.List;
 
-import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,24 +40,12 @@ public class FriendDAOImpl implements FriendDAO {
 		return null;
 	}
 
-	public boolean save(Friend friend) {
-		try {
-			sessionFactory.getCurrentSession().save(friend);
-			return true;
-		} catch (HibernateException e) {
-			e.printStackTrace();
-		}
-		return false;
+	public void save(Friend friend) {
+			sessionFactory.getCurrentSession().save(friend);	
 	}
 
-	public boolean update(Friend friend) {
-		try {
+	public void update(Friend friend) {
 			sessionFactory.getCurrentSession().update(friend);
-			return true;
-		} catch (HibernateException e) {
-			e.printStackTrace();
-		}
-		return false;
 	}
 
 	public void delete(int userId, int friendId) {
@@ -96,4 +83,16 @@ public class FriendDAOImpl implements FriendDAO {
 		return list;
 	}
 
+	public Friend get(int id) {
+		String hql = "from Friend where id=" + "'" + id + "'";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+
+		@SuppressWarnings("unchecked")
+		List<Friend> listFriend = (List<Friend>) query.list();
+
+		if (listFriend != null && !listFriend.isEmpty()) {
+			return listFriend.get(0);
+		}
+		return null;
+	}
 }

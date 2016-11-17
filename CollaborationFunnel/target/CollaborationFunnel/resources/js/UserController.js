@@ -12,7 +12,12 @@ app.controller('UserController', ['$http','$scope','$cookieStore','User','UserSe
     ob.users=[];
     ob.user = new User(); 
     ob.fetchAllUsers = function(){
-        ob.users = User.query();
+        /*ob.users = User.query();*/
+    	UserService.fetchAllUsers().then(function(d){
+   				ob.users = d;
+   			},function(errResponse){
+   				console.error('Error while fetching users');
+    	});
     };
     ob.fetchAllUsers();
     ob.addUser = function(){
@@ -94,19 +99,20 @@ app.controller('UserController', ['$http','$scope','$cookieStore','User','UserSe
     										'currentUser',
     										$rootScope.currentUser);
     							$location.path('/');
-    						}		
+    						}	
     				},
     				function(errorResponse){
     					console.error('Error while authenticate Users');
     				});
     };
     ob.logout = function(){
+    	console.log('logout..');
     	$rootScope.currentUser = {};
     	$cookieStore.remove('currentUser');
     	
     	console.log('calling the method logout of user service');
     	UserService.logout()
-    	$location.path('/');	
+    	$location.path('/login');	
     };
     ob.login = function(){
     	{

@@ -1,8 +1,8 @@
 'use strict';
 
-app.factory('FriendService',['$http','$q','$rootScope', function($http, $q, $rootScope){
+app.factory('FriendService',['$http','$q','$rootScope',function($http, $q, $rootScope){
 	
-	consolelog("FriendService...")
+	console.log("FriendService...")
 	
 	var BASE_URL='http://localhost:8085/CollaborationFunnel'
 		return{
@@ -17,9 +17,33 @@ app.factory('FriendService',['$http','$q','$rootScope', function($http, $q, $roo
 					return $q.reject(errResponse);
 					}			
 				);
-			},
+		},
+		getMyFriend: function(){
+			return $http.get(BASE_URL+'/myFriend')
+			.then(
+				function(response){
+					return response.data;
+				},
+				function(errResponse){
+					console.error('Error while fetching friend');
+					return $q.reject(errResponse);
+					}			
+				);
+		},
+		getMyFriendRequests: function(){
+			return $http.get(BASE_URL+'/getMyFriendRequests/')
+			.then(
+				function(response){
+					return response.data;
+				},
+				function(errResponse){
+					console.error('Error while fetching friend requests');
+					return $q.reject(errResponse);
+					}			
+				);
+		},
 		sendFriendRequest: function(friendId){
-			return $http.get(BASE_URL+'/addFriend/'+friendId)
+			return $http.post(BASE_URL+'/addFriend/'+friendId)
 				.then(
 						function(response){
 							return response.data;
@@ -30,7 +54,43 @@ app.factory('FriendService',['$http','$q','$rootScope', function($http, $q, $roo
 							}			
 						);
 		},
-		updateFriendRequest: function(friend, id){
+		acceptFriendRequest: function(friendId, friend){
+			return $http.get(BASE_URL+'/acceptFriend/'+friendId, friend)
+			.then(
+					function(response){
+						return response.data;
+					},
+					function(errResponse){
+						console.error('Error while accepting friend request');
+						return $q.reject(errResponse);
+						}			
+					);
+		},
+		rejectFriendRequest: function(friendId){
+			return $http.get(BASE_URL+'/rejectFriend/'+friendId)
+			.then(
+					function(response){
+						return response.data;
+					},
+					function(errResponse){
+						console.error('Error while rejecting friend request');
+						return $q.reject(errResponse);
+						}			
+					);
+		},
+		unFriend: function(friendId){
+			return $http.get(BASE_URL+'/unFriend/'+friendId)
+			.then(
+					function(response){
+						return response.data;
+					},
+					function(errResponse){
+						console.error('Error while unfriend');
+						return $q.reject(errResponse);
+						}			
+					);
+		},
+		updateFriendRequest: function(id, friend){
 			return $http.put(BASE_URL+'/friend/'+id, friend)
 				.then(
 						function(response){
@@ -54,4 +114,5 @@ app.factory('FriendService',['$http','$q','$rootScope', function($http, $q, $roo
 							}			
 						);
 		}
+	}
 }]);

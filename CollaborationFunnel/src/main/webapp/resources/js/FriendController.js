@@ -36,10 +36,10 @@ app.controller('FriendController', ['$scope','FriendService','UserService','$loc
 		   			);
 	};
 	ob.acceptFriendRequest=acceptFriendRequest
-	function acceptFriendRequest(friendId)
+	function acceptFriendRequest(userId)
 	{
-		console.log("->acceptFriendRequest :"+friendId)
-		   FriendService.acceptFriendRequest(friendId)
+		console.log("->acceptFriendRequest :"+userId)
+		   FriendService.acceptFriendRequest(userId)
 		   	.then(
 		   			function(d){
 		   				ob.friend = d;
@@ -119,8 +119,8 @@ app.controller('FriendController', ['$scope','FriendService','UserService','$loc
 		   			}	
 				);
 	};
-	ob.updateFriendRequest = function(friend, id){
-		FriendService.updateFriendRequest(friend, id)
+	ob.updateFriendRequest = function(id, friend){
+		FriendService.updateFriendRequest(id, friend)
 			.then(
 					ob.fetAllFriends,
 					function(errResponse){
