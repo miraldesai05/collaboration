@@ -71,10 +71,25 @@ app.run( function ($rootScope, $location,$cookieStore, $http){
         console.log("restrictedPage:" +restrictedPage)
         var loggedIn = $rootScope.currentUser.userId;
         console.log("loggedIn:" +loggedIn)
-        if (restrictedPage && !loggedIn) {
-        	console.log("Navigating to login page")
-            $location.path('/login');
-        }
+        if(!loggedIn)
+        	{
+        		if (restrictedPage) {
+        			console.log("Navigating to login page")
+        			$location.path('/login');
+        		}
+        	}
+        else
+        	{
+        		var role= $rootScope.currentUser.role;
+        		var userRestrictedPage=  $.inArray($location.path(), ['/bloglist']) == 0;
+        		
+        		if(userRestrictedPage && role!='admin')
+        			{
+        				alert("You can not do this operation as you are logged as :" + role);
+        				$location.path('/');
+        			}
+        	}
+        
     });
 	
     // keep user logged in after page refresh

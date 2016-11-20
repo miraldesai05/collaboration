@@ -76,11 +76,11 @@ public class FriendController {
 		return new ResponseEntity<List<Friend>>(myFriendRequests, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value="/acceptFriend/{userId}", method=RequestMethod.GET)
-	public ResponseEntity<Friend> acceptFriendRequest(@PathVariable("userId") int userId, HttpSession session)
+	@RequestMapping(value="/acceptFriend/{friendId}", method=RequestMethod.GET)
+	public ResponseEntity<Friend> acceptFriendRequest(@PathVariable("friendId") int friendId, HttpSession session)
 	{
 		int loggedInUserID = (Integer)session.getAttribute("loggedInUserId");
-		friend.setUserId(userId);
+		/*friend.setUserId(userId);*/
 		friend.setFriendId(loggedInUserID);
 		friend.setIsOnline('Y');
 		friend.setStatus("A");

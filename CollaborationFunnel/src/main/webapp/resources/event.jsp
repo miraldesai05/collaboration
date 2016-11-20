@@ -47,10 +47,10 @@
         </div>    
     </div>
     <div class="form-group">    
-        <label class="control-label col-sm-2">Date & Time:</label>
+        <label class="control-label col-sm-2">Date:</label>
         <div class="col-sm-10">
-            <input type="text" name="dateTime" ng-model="eventCtrl.event.dateTime" required class="form-control" placeholder="Enter date" /><br>
-            <span ng-show="eventForm.dateTime.$error.required" class="msg-val">Date & Time is required.</span> 
+            <input type="date" name="dateTime" ng-model="eventCtrl.event.dateTime" required class="form-control"/><br>
+            <span ng-show="eventForm.dateTime.$error.required" class="msg-val">Date is required.</span> 
         </div>    
     </div>
     <div class="form-group">  

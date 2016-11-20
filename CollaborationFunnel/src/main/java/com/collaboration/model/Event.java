@@ -1,6 +1,6 @@
 package com.collaboration.model;
 
-import java.util.Date;
+/*import java.util.Date;*/
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+/*import com.fasterxml.jackson.annotation.JsonFormat;*/
 
 @Entity
 @Table(name="C_Event")
@@ -20,8 +20,8 @@ public class Event {
 	private String name;
 	private String venue;
 	private String description;
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm a z")
-	private Date dateTime;
+	/*@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm a z")*/
+	private String dateTime;
 	
 	public int getEventId() {
 		return eventId;
@@ -48,15 +48,15 @@ public class Event {
 		this.description = description;
 	}
 	
-	public Date getDateTime() {
+	public String getDateTime() {
 		return dateTime;
 	}
-	public void setDateTime(Date dateTime) {
+	public void setDateTime(String dateTime) {
 		this.dateTime = dateTime;
 	}
-	public Event()
+	/*public Event()
 	{
 		Date d= new Date();
 		dateTime=d;
-	}
+	}*/
 }

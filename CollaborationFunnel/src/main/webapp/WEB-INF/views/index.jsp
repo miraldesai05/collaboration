@@ -6,10 +6,51 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="resources/css/bootstrap.min.css">
+<style>
+body {
+  padding-top: 90px;
+  background:#F7F7F7;
+  color:#666666;
+  font-family: 'Roboto', sans-serif;
+  font-weight:100;
+}
+
+body{
+  width: 100%;
+  background: -webkit-linear-gradient(left, #22d686, #24d3d3, #22d686, #24d3d3);
+  background: linear-gradient(to right, #22d686, #24d3d3, #22d686, #24d3d3);
+  background-size: 600% 100%;
+  -webkit-animation: HeroBG 20s ease infinite;
+          animation: HeroBG 20s ease infinite;
+}
+	@-webkit-keyframes HeroBG {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+@keyframes HeroBG {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+</style>
 <title>Insert title here</title>
 </head>
 <body>
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-fixed-top navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -23,7 +64,7 @@
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Home</a></li>
         <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Blog<span class="caret"></span></a>
+          <a class="dropdown-toggle" data-toggle="dropdown">Blog<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#/blogpage">Add Blog</a></li>
             <li><a href="#/bloglist">Blog List</a></li>
@@ -33,7 +74,7 @@
         <li><a href="#/eventpage">Event</a></li>
         <!-- <li><a href="#/friend">view friend</a></li> -->
          <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Friend<span class="caret"></span></a>
+          <a class="dropdown-toggle" data-toggle="dropdown">Friend<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#/friend">View friends</a></li>
             <li><a href="#/friendrequest">Friend request</a></li>
