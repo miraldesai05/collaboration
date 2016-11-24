@@ -95,23 +95,4 @@ public class FriendController {
 		List<Friend> myFriend = friendService.getMyFriend(loggedInUserID);
 		return new ResponseEntity<List<Friend>>(myFriend, HttpStatus.OK);
 	}
-	
-	@RequestMapping(value="/friend/{id}", method=RequestMethod.GET)
-	public ResponseEntity<Friend> getId(@PathVariable("id") int id)
-	{
-		Friend friend=friendService.get(id);
-		if(friend==null)
-		{
-			friend=new Friend();
-			return new ResponseEntity<Friend>(friend,HttpStatus.NOT_FOUND);
-		}
-		return new ResponseEntity<Friend>(friend,HttpStatus.OK);
-	}
-	
-	/*@RequestMapping(value="/myFriends/{id}", method=RequestMethod.GET)
-	public ResponseEntity<List<Friend>> getMyFriendsTemp(@PathVariable("id") int id)
-	{
-		List<Friend> myFriends = friendService.getMyFriends(id);
-		return new ResponseEntity<List<Friend>>(myFriends, HttpStatus.OK);
-	}*/
 }

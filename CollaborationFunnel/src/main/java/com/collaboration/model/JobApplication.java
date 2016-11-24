@@ -1,6 +1,4 @@
-package com.collaboration.model;
-
-import java.util.Date;
+/*package com.collaboration.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,10 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 @Entity
-@Table(name="C_Job_Applied")
+@Table(name="C_Job_Applicaton")
 public class JobApplication {
 	
 	@Id
@@ -19,9 +15,7 @@ public class JobApplication {
 	private int jobApplicationId;
 	private int userId;
 	private int jobId;
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm a z")
-	private Date dateApplied;
-	private String remarks;
+	private String dateApplied;
 	private char status;
 	
 	public int getJobApplicationId() {
@@ -42,17 +36,11 @@ public class JobApplication {
 	public void setJobId(int jobId) {
 		this.jobId = jobId;
 	}
-	public Date getDateApplied() {
+	public String getDateApplied() {
 		return dateApplied;
 	}
-	public void setDateApplied(Date dateApplied) {
+	public void setDateApplied(String dateApplied) {
 		this.dateApplied = dateApplied;
-	}
-	public String getRemarks() {
-		return remarks;
-	}
-	public void setRemarks(String remarks) {
-		this.remarks = remarks;
 	}
 	public char getStatus() {
 		return status;
@@ -60,9 +48,5 @@ public class JobApplication {
 	public void setStatus(char status) {
 		this.status = status;
 	}
-	public JobApplication()
-	{
-		Date d= new Date();
-		dateApplied=d;
-	}
 }
+*/

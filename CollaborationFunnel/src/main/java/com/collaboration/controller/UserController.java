@@ -73,6 +73,14 @@ public class UserController {
 		return new ResponseEntity<User>(user,HttpStatus.OK);
 	}
 	
+	@RequestMapping(value="/myProfile", method=RequestMethod.GET)
+	public ResponseEntity<User> myProfile(HttpSession session)
+	{
+		int loggedInUserID = (Integer)session.getAttribute("loggedInUserId");
+		User user=userService.get(loggedInUserID);
+		return new ResponseEntity<User>(user, HttpStatus.OK);
+	}
+	
 	@RequestMapping(value="/user/{userId}", method=RequestMethod.PUT)
 	public ResponseEntity<User> updateUser(@RequestBody User user){
 		

@@ -19,6 +19,17 @@ app.controller('UserController', ['$http','$scope','$cookieStore','User','UserSe
    				console.error('Error while fetching users');
     	});
     };
+    ob.getSelectedUser = myProfile
+    
+    function myProfile(){
+        console.log("MyProfile...")
+    	UserService.myProfile().then(function(d){
+   				ob.user = d;
+   				$location.path("/myProfile");
+   			},function(errResponse){
+   				console.error('Error while fetch profile');
+    	});
+    };
     ob.fetchAllUsers();
     ob.addUser = function(){
 	console.log('Inside save');

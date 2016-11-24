@@ -13,10 +13,9 @@
 <div class="container" ng-controller="UserController as ctrl">
 <div ng-hide="currentUser.userId !== friend.friendId">
 <p>friend Id: {{friend.userId}} &nbsp;&nbsp;&nbsp;Status: {{friend.status}}
-<input type="submit" ng-click="ctr.unFriend(friend.userId)" class="btn btn-warning" value="unfriend"/>
-<a href="#/chat">Send Message</a>
+<!-- <input type="submit" ng-click="ctr.unFriend(friend.userId)" class="btn btn-warning" value="unfriend"/> -->
+<a href="#/chat"><input type="submit" class="btn btn-warning" value="Send Message"/></a>
 </p></div>
-</fieldset>
 </div> 
 </div>
 </div>

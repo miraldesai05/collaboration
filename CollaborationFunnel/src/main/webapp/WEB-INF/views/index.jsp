@@ -5,6 +5,7 @@
 <html ng-app="app">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="shortcut icon" href="resources/images/Capture.PNG">
 <link rel="stylesheet" href="resources/css/bootstrap.min.css">
 <style>
 body {
@@ -47,7 +48,7 @@ body{
   }
 }
 </style>
-<title>Insert title here</title>
+<title>Collaboration Website</title>
 </head>
 <body>
 <nav class="navbar navbar-fixed-top navbar-inverse">
@@ -58,11 +59,13 @@ body{
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">CollaborationFunnel</a>
+      <img src="resources/images/Capture5.png" alt="Image" style="width:250px;height:50px">
+      <!-- <a class="navbar-brand" href="#">CollaborationFunnel</a> -->
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Home</a></li>
+        <li><a href="#/userlist">User List</a></li> 
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown">Blog<span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -71,11 +74,21 @@ body{
           <!--   <li><a href="#">Page 1-3</a></li> -->
           </ul>
         </li>
+        <!-- <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown">Job<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#/jobpage">Search Job</a></li>
+            <li><a href="#/viewjob">View Applied Job</a></li>
+            <li><a href="#/joblist">Post Job</a></li>
+          </ul>
+        </li> -->
         <li><a href="#/eventpage">Event</a></li>
+        <li><a href="#/chatforum">Chat Forum</a></li>
         <!-- <li><a href="#/friend">view friend</a></li> -->
          <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown">Friend<span class="caret"></span></a>
           <ul class="dropdown-menu">
+          	<!-- <li><a href="#/searchfriend"> Search Friend</a></li> -->
             <li><a href="#/friend">View friends</a></li>
             <li><a href="#/friendrequest">Friend request</a></li>
           <!--   <li><a href="#">Page 1-3</a></li> -->
@@ -84,13 +97,14 @@ body{
       </ul>
       <ul class="nav navbar-nav navbar-right">
       <div ng-controller="UserController as ctrl">
-    <div ng-hide="currentUser.username!==ctrl.user.username"> 
-        <li><a href="#/userpage"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="#/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    <div ng-hide="currentUser.username!==ctrl.user.username">  
+        <!-- <li><a href="#/userpage"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li> -->
+        <!-- <li><a href="#/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> -->
+       <a href="#/login"><input type="submit" class="btn btn-primary navbar-btn" value="Login"/></a>
       </div>
       <div ng-hide="currentUser.username===ctrl.user.username">
          <!-- <li><a href="#/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li> -->
-         <input type="submit" ng-click="ctrl.logout()" class="btn btn-primary" value="logout"/>
+         <input type="submit" ng-click="ctrl.logout()" class="btn btn-primary navbar-btn" value="Logout"/>
       </div>
       </div>  
       </ul>
@@ -107,7 +121,7 @@ body{
     <script src="resources/js/angular-route.js"></script> 
     <script src="resources/js/angular-cookies.js"></script> 
     
-    <!-- <script src="resources/js/sockjs.js"></script>  -->
+   <!--  <script src="resources/js/sockjs.js"></script>  -->
     <script src="resources/js/sockjs.min.js"></script> 
     <script src="resources/js/stomp.js"></script> 
     <script src="resources/js/stomp.min.js"></script> 
@@ -123,6 +137,10 @@ body{
     <script src="resources/js/FriendService.js"></script> 
     <script src="resources/js/ChatController.js"></script> 
     <script src="resources/js/ChatService.js"></script> 
+    <script src="resources/js/ChatForumController.js"></script> 
+    <script src="resources/js/ChatForumService.js"></script> 
+    <script src="resources/js/JobController.js"></script> 
+    <script src="resources/js/JobService.js"></script>
    
 </body>
 </html>

@@ -19,11 +19,12 @@
 		</div>
 		<div class="title">Chat</div>
 	</div>
-
-		<p ng-repeat="message in messages | orderBy:'time':true" class="message">
+        <h3>
+		<p ng-repeat="message in messages | orderBy:'time':false" class="message">	
 		<time>{{message.time | date:'HH:mm'}}</time>
 		<span ng-class="{self: message.self}">{{message.message}}</span>
 		</p>
+		</h3>
 
 		<div class="bottom_wrapper clearfix">
 			<div class="message_input_wrapper">
@@ -31,7 +32,7 @@
 			</div>
 			
 			<button class="send_message" ng-disabled="message.length > max || message.length === 0">Send</button>
-			<span class="count" ng-bind="max - message.length" ng-class="{danger: message.length > max}">140</span>
+			&nbsp;&nbsp;&nbsp;<span class="count" ng-bind="max - message.length" ng-class="{danger: message.length > max}">140</span>
 			
 		</div>
 </div>
@@ -45,19 +46,5 @@
 </div>
 </form>
 </div>
-<!-- <div ng-controller="ChatController" class="container">
-<form ng-submit="addMessage()" name="messageForm">
-<input type="text" placeholder="Compose a new message..." ng-model="message" />
-<div class="info">
-<span class="count" ng-bind="max - message.length" ng-class="{danger: message.length > max}">140</span>
-<button ng-disabled="message.length > max || message.length === 0">Send</button>
-</div>
-</form>
-</hr>
-<p ng-repeat="message in messages | orderBy:'time':true" class="message">
-<time>{{message.time | date:'HH:mm'}}</time>
-<span ng-class="{self: message.self}">{{message.message}}</span>
-</p>
-</div> -->
 </body>
 </html>

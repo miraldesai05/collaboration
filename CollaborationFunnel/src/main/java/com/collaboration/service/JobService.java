@@ -1,4 +1,4 @@
-package com.collaboration.service;
+/*package com.collaboration.service;
 
 import java.util.List;
 
@@ -50,3 +50,4 @@ public class JobService {
 		return jobDAOImpl.getMyAppliedJobs(userId);
 	}
 }
+*/

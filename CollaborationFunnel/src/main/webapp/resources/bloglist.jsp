@@ -6,12 +6,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<!-- <link rel="stylesheet" href="resources/css/bootstrap.min.css"> -->
 <title>Insert title here</title>
 </head>
 <body>
 <div ng-controller="BlogController as blogCtrl" class="container">
-    <table class="table table-striped table-bordered">
+    <table class="table table-bordered">
         <thead>
             <tr>
             	<th>Id</th>
@@ -30,10 +29,5 @@
         </tbody>
     </table>
 </div>
-	<!-- <script src="resources/js/angular.min.js"></script> 
-    <script src="resources/js/angular-resource.min.js"></script>  
-	<script src="resources/app/BlogController.js"></script>
-    <script src="resources/js/jquery.min.js"></script>
-	<script src="resources/js/bootstrap.min.js"></script> -->
 </body>
 </html>

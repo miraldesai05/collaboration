@@ -1,4 +1,4 @@
-package com.collaboration.dao;
+/*package com.collaboration.dao;
 
 import java.util.List;
 
@@ -16,3 +16,4 @@ public interface JobDAO {
 	public JobApplication get(int userId,int jobId);
 	public JobApplication getMyAppliedJobs(int userId);
 }
+*/

@@ -1,4 +1,4 @@
-package com.collaboration.dao;
+/*package com.collaboration.dao;
 
 import java.util.List;
 
@@ -88,3 +88,4 @@ public class JobDAOImpl implements JobDAO {
 		return query.list();	
 	}
 }
+*/

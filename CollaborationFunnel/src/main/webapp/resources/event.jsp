@@ -5,7 +5,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<!-- <link rel="stylesheet" href="resources/css/bootstrap.min.css"> -->
 <title>Insert title here</title>
 	<style>
 	.msg-val {
@@ -42,7 +41,7 @@
     <div class="form-group">    
         <label class="control-label col-sm-2">Description:</label>
         <div class="col-sm-10">
-            <input type="text" name="description" ng-model="eventCtrl.event.description" required class="form-control" placeholder="Enter description" /><br>
+            <textarea type="text" name="description" ng-model="eventCtrl.event.description" required class="form-control" placeholder="Enter description" rows="5"></textarea><br>
             <span ng-show="eventForm.description.$error.required" class="msg-val">Description is required.</span> 
         </div>    
     </div>
@@ -73,14 +72,14 @@
 		 </div> 
     </div>
  </form>
-  <table class="table table-striped table-bordered">
+  <table class="table table-bordered">
         <thead>
             <tr>
             	<th>Id</th>
                 <th>Name</th>
                 <th>Venue</th>
                 <th>Description</th>
-                <th>Date_Time</th>
+                <th>Date</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -92,15 +91,10 @@
 	         	<td><span ng-bind="row.description"></span></td>
 	         	<td><span ng-bind="row.dateTime"></span></td>
                 <td> <a href="" ng-click="eventCtrl.editEvent(row.eventId)">edit</a> | <a href="" ng-click="eventCtrl.deleteEvent(row.eventId)">delete</a></td>
-                <td><span ng-if="eventCtrl.flag=='updated' && row.eventId==eventCtrl.updatedId" class="msg-success">Event successfully updated.</span> </td>
+                <span ng-if="eventCtrl.flag=='updated' && row.eventId==eventCtrl.updatedId" class="msg-success">Event successfully updated.</span> 
             </tr>
         </tbody>
     </table>
 </div>
-	<!-- <script src="resources/js/angular.min.js"></script> 
-    <script src="resources/js/angular-resource.min.js"></script>  
-	<script src="resources/app/EventController.js"></script>
-    <script src="resources/js/jquery.min.js"></script>
-	<script src="resources/js/bootstrap.min.js"></script> -->
 </body>
 </html>

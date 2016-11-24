@@ -9,20 +9,18 @@
 <body>
 <div class="container" ng-controller="FriendController as ctrl">
 <div class="form-group has-feedback"></div>
-Search for friend
-<p><input type="text" ng-model="sear_text"></p>
-<div class="container" ng-controller="UserController as ctrl">
-<div ng-hide="currentUser.userId !== friend.userId">
-<div ng-repeat="friend in ctrl.friend | filter: sear_text">
-<fieldset>
-<legend></legend>
+<div ng-hide="currentUser.userId !== friend.userId"> 
 <input type="submit" ng-click="ctrl.getMyFriends()" class="btn btn-danger" value="Get My Friends"/>
+</div>
+<div ng-repeat="friend in ctrl.friend | filter: sear_text">
+<div ng-hide="currentUser.userId !== friend.userId"> 
 <p>friend Id: {{friend.friendId}} &nbsp;&nbsp;&nbsp;Status: {{friend.status}}
-<input type="submit" ng-click="ctrl.unFriend(friend.friendId)" class="btn btn-warning" value="unfriend"/>
-<a href="#/chat">Send Message</a>
-</fieldset>
+<!-- <input type="submit" ng-click="ctrl.unFriend(friend.userId)" class="btn btn-warning" value="unfriend"/> -->
+<a href="#/chat"><input type="submit" class="btn btn-warning" value="Send Message"/></a>
+</p>
 </div>
 </div>  
+</div>
 <%@ include file="/resources/fri.jsp"%> 
 </body>
 </html>

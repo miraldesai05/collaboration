@@ -85,7 +85,7 @@ app.controller('FriendController', ['$scope','FriendService','UserService','$loc
 		FriendService.getMyFriends()
 			.then(
 					function(d){
-		   				ob.friend = d;
+		   				ob.friend = d; 
 		   				/*alert("get my friends")*/
 		   			},
 		   			function(errResponse){

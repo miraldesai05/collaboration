@@ -8,17 +8,14 @@
 </head>
 <body>
 <div class="container" ng-controller="FriendController as ctr"> 
-<input type="submit" ng-click="ctr.getMyFriend()" class="btn btn-primary" value="get Friend"/> 
+<input type="submit" ng-click="ctr.getMyFriend()" class="btn btn-primary" value="get Friend"/>  
 <div ng-repeat="friend in ctr.friend | filter: sear_text">
-<fieldset>
-<legend></legend>
 <div class="container" ng-controller="UserController as ctrl">
-<div ng-hide="currentUser.userId === friend.userId">
+<div ng-hide="currentUser.userId !== friend.friendId">
 <p>friend Id: {{friend.userId}} &nbsp;&nbsp;&nbsp;Status: {{friend.status}}
-<input type="submit" ng-click="ctr.unFriend(friend.userId)" class="btn btn-warning" value="unfriend"/>
+<!-- <input type="submit" ng-click="ctr.unFriend(friend.userId)" class="btn btn-warning" value="unfriend"/> -->
 <a href="#/chat">Send Message</a>
 </p></div>
-</fieldset>
 </div> 
 </div>
 </div>

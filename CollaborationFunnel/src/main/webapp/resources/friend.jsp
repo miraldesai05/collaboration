@@ -9,8 +9,8 @@
 <body>
 <div class="container" ng-controller="FriendController as ctrl">
 <div class="form-group has-feedback"></div>
-Search for friend
-<p><input type="text" ng-model="sear_text"></p>
+<!-- Search for friend
+<p><input type="text" ng-model="sear_text"></p> -->
 <input type="submit" ng-click="ctrl.getMyFriendRequests()" class="btn btn-primary" value="Friend request"/>
 <div ng-repeat="friend in ctrl.friend | filter: sear_text">
 <div ng-hide="currentUser.userId !== friend.friendId">

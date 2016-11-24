@@ -6,7 +6,6 @@ F:\Project\CollaborationFunnel\src\main\java\com\collaboration\service\EventServ
 F:\Project\CollaborationFunnel\src\main\java\com\collaboration\model\Friend.java
 F:\Project\CollaborationFunnel\src\main\java\com\collaboration\model\Blog.java
 F:\Project\CollaborationFunnel\src\main\java\com\collaboration\controller\BlogController.java
-F:\Project\CollaborationFunnel\src\main\java\com\collaboration\model\Forum.java
 F:\Project\CollaborationFunnel\src\main\java\com\collaboration\service\BlogService.java
 F:\Project\CollaborationFunnel\src\main\java\com\collaboration\model\User.java
 F:\Project\CollaborationFunnel\src\main\java\com\collaboration\dao\JobDAOImpl.java
@@ -31,3 +30,4 @@ F:\Project\CollaborationFunnel\src\main\java\com\collaboration\service\JobServic
 F:\Project\CollaborationFunnel\src\main\java\com\collaboration\controller\ChatController.java
 F:\Project\CollaborationFunnel\src\main\java\com\collaboration\dao\UserDAO.java
 F:\Project\CollaborationFunnel\src\main\java\com\collaboration\model\Event.java
+F:\Project\CollaborationFunnel\src\main\java\com\collaboration\controller\ChatForumController.java

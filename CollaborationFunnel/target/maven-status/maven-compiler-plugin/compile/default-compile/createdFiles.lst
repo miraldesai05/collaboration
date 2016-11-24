@@ -1,7 +1,6 @@
 com\collaboration\dao\BlogDAO.class
 com\collaboration\model\User.class
 com\collaboration\model\Message.class
-com\collaboration\model\Forum.class
 com\collaboration\service\BlogService.class
 com\collaboration\config\WebSocketConfig.class
 com\collaboration\model\OutputMessage.class
@@ -12,6 +11,7 @@ com\collaboration\dao\JobDAO.class
 com\collaboration\dao\EventDAO.class
 com\collaboration\dao\FriendDAO.class
 com\collaboration\controller\BlogController.class
+com\collaboration\controller\ChatForumController.class
 com\collaboration\model\Blog.class
 com\collaboration\dao\JobDAOImpl.class
 com\collaboration\model\Job.class

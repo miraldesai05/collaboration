@@ -5,11 +5,52 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="shortcut icon" href="resources/images/Capture.PNG">
 <link rel="stylesheet" href="resources/css/bootstrap.min.css">
-<title>Insert title here</title>
+<style>
+body {
+  padding-top: 50px;
+  background:#F7F7F7;
+  color:#666666;
+  font-family: 'Roboto', sans-serif;
+  font-weight:100;
+}
 
+body{
+  width: 100%;
+  background: -webkit-linear-gradient(left, #22d686, #24d3d3, #22d686, #24d3d3);
+  background: linear-gradient(to right, #22d686, #24d3d3, #22d686, #24d3d3);
+  background-size: 600% 100%;
+  -webkit-animation: HeroBG 20s ease infinite;
+          animation: HeroBG 20s ease infinite;
+}
+	@-webkit-keyframes HeroBG {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+@keyframes HeroBG {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+</style>
+<title>Collaboration Website</title>
 </head>
-<body ng-app="myApp" ng-controller="getData">
+<body ng-app="myApp" ng-controller="getData" class="container">
 <h1>Blog Details</h1>
 <hr>
   <br>

@@ -5,7 +5,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<!-- <link rel="stylesheet" href="resources/css/bootstrap.min.css"> -->
 <title>Insert title here</title>
 	<style>
 	.msg-val {
@@ -35,7 +34,7 @@
     <div class="form-group">    
         <label class="control-label col-sm-2">Description:</label>
         <div class="col-sm-10">
-            <input type="text" name="description" ng-model="blogCtrl.blog.description" required class="form-control" placeholder="Enter description" /><br>
+            <textarea type="text" name="description" ng-model="blogCtrl.blog.description" required class="form-control" placeholder="Enter description" rows="5"></textarea><br>
             <span ng-show="blogForm.description.$error.required" class="msg-val">Description is required.</span> 
         </div>    
     </div>
@@ -66,7 +65,7 @@
 		 </div> 
     </div>
  </form>
-  <table class="table table-striped table-bordered">
+  <table class="table table-bordered">
         <thead>
             <tr>
             	<th>Id</th>
@@ -81,15 +80,10 @@
 	        	<td><span ng-bind="row.title"></span></td>
 	         	<td><span ng-bind="row.description"></span></td>
                 <td> <a href="" ng-click="blogCtrl.editBlog(row.blogId)">edit</a> | <a href="" ng-click="blogCtrl.deleteBlog(row.blogId)">delete</a></td>
-                <td><span ng-if="blogCtrl.flag=='updated' && row.blogId==blogCtrl.updatedId" class="msg-success">Blog successfully updated.</span> </td>
+                <span ng-if="blogCtrl.flag=='updated' && row.blogId==blogCtrl.updatedId" class="msg-success">Blog successfully updated.</span> 
             </tr>
         </tbody>
     </table>
 </div>
-	<!-- <script src="resources/js/angular.min.js"></script> 
-    <script src="resources/js/angular-resource.min.js"></script>  
-	<script src="resources/js/BlogController.js"></script>
-    <script src="resources/js/jquery.min.js"></script>
-	<script src="resources/js/bootstrap.min.js"></script> -->
 </body>
 </html>

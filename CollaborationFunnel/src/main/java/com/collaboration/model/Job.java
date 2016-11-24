@@ -1,6 +1,4 @@
-package com.collaboration.model;
-
-import java.util.Date;
+/*package com.collaboration.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,22 +6,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 @Entity
-@Table(name="C_Job")
-public class Job {
-	
+@Table(name="Job_Detail")
+public class Job extends BaseDomain {
+		
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int jobId;
 	private String title;
 	private String description;
 	private String qualification;
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm a z")
-	private Date dateTime;
+	private String date;
 	private char status;
-	
+		
 	public int getJobId() {
 		return jobId;
 	}
@@ -48,25 +43,18 @@ public class Job {
 	public void setQualification(String qualification) {
 		this.qualification = qualification;
 	}
-	public Date getDateTime() {
-		return dateTime;
+	public String getDate() {
+		return date;
 	}
-	public void setDateTime(Date dateTime) {
-		this.dateTime = dateTime;
+	public void setDateTime(String date) {
+		this.date = date;
 	}
 	public char getStatus() {
 		return status;
 	}
 	public void setStatus(Character status) {
-		if(status==null)
-		{
-			status=new Character('v');
-		}
 		this.status = status;
 	}
-	public Job()
-	{
-		Date d= new Date();
-		dateTime=d;
-	}
 }
+
+*/

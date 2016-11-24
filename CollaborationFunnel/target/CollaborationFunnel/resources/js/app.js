@@ -14,16 +14,14 @@ var app = angular.module('app', ['ngRoute','ngResource','ngCookies']);
                 templateUrl: 'resources/login.jsp'
             })
             
+            .when('/chatforum', {
+                controller: 'ChatForumController',
+                templateUrl: 'resources/chatforum.jsp'
+            })
+            
              .when('/logout', {
                 controller: 'UserController'	
             })
-            
-            
-           /* .when('/register', {
-                controller: 'RegisterController',
-                templateUrl: 'register/register.view.html',
-                controllerAs: 'vm'
-            })*/
             
             .when('/blogpage', {
                 controller: 'BlogController',
@@ -35,9 +33,24 @@ var app = angular.module('app', ['ngRoute','ngResource','ngCookies']);
                 templateUrl: 'resources/bloglist.jsp'
             })
             
-            .when('/userpage', {
+            .when('/jobpage', {
+                controller: 'JobController',
+                templateUrl: 'resources/job.jsp'
+            })
+            
+            .when('/joblist', {
+                controller: 'JobController',
+                templateUrl: 'resources/joblist.jsp'
+            })
+            
+            .when('/userlist', {
                 controller: 'UserController',
-                templateUrl: 'resources/user.jsp'
+                templateUrl: 'resources/userlist.jsp'
+            })
+            
+            .when('/myProfile', {
+                controller: 'UserController',
+                templateUrl: 'resources/profile.jsp'
             })
             
             .when('/eventpage', {
@@ -67,14 +80,29 @@ app.run( function ($rootScope, $location,$cookieStore, $http){
 	
 	$rootScope.$on('$locationChangeStart', function (event, next, current) {
         // redirect to login page if not logged in and trying to access a restricted page
-        var restrictedPage = $.inArray($location.path(), ['/','/login', '/userpage']) === -1;
+        var restrictedPage = $.inArray($location.path(), ['/login','/bloglist']) === -1;
         console.log("restrictedPage:" +restrictedPage)
         var loggedIn = $rootScope.currentUser.userId;
         console.log("loggedIn:" +loggedIn)
-        if (restrictedPage && !loggedIn) {
-        	console.log("Navigating to login page")
-            $location.path('/login');
-        }
+        if(!loggedIn)
+        	{
+        		if (restrictedPage) {
+        			console.log("Navigating to login page")
+        			$location.path('/login');
+        		}
+        	}
+        else
+        	{
+        		var role= $rootScope.currentUser.role;
+        		var userRestrictedPage=  $.inArray($location.path(), ['/userlist','/jobpage']) == 0;
+        		
+        		if(userRestrictedPage && role!='admin')
+        			{
+        				alert("You can not do this operation as you are logged as :" + role);
+        				$location.path('/');
+        			}
+        	}
+        
     });
 	
     // keep user logged in after page refresh

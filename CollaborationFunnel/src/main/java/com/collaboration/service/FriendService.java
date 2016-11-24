@@ -52,8 +52,4 @@ public class FriendService {
 	{
 		return friendDAOImpl.getMyFriend(friendId);
 	}
-	public Friend get(int id)
-	{
-		return friendDAOImpl.get(id);
-	}
 }

@@ -14,16 +14,14 @@ var app = angular.module('app', ['ngRoute','ngResource','ngCookies']);
                 templateUrl: 'resources/login.jsp'
             })
             
+            .when('/chatforum', {
+                controller: 'ChatForumController',
+                templateUrl: 'resources/chatforum.jsp'
+            })
+            
              .when('/logout', {
                 controller: 'UserController'	
             })
-            
-            
-           /* .when('/register', {
-                controller: 'RegisterController',
-                templateUrl: 'register/register.view.html',
-                controllerAs: 'vm'
-            })*/
             
             .when('/blogpage', {
                 controller: 'BlogController',
@@ -34,10 +32,15 @@ var app = angular.module('app', ['ngRoute','ngResource','ngCookies']);
                 controller: 'BlogController',
                 templateUrl: 'resources/bloglist.jsp'
             })
-            
-            .when('/userpage', {
+              
+            .when('/userlist', {
                 controller: 'UserController',
-                templateUrl: 'resources/user.jsp'
+                templateUrl: 'resources/userlist.jsp'
+            })
+            
+            .when('/myProfile', {
+                controller: 'UserController',
+                templateUrl: 'resources/profile.jsp'
             })
             
             .when('/eventpage', {
@@ -67,7 +70,7 @@ app.run( function ($rootScope, $location,$cookieStore, $http){
 	
 	$rootScope.$on('$locationChangeStart', function (event, next, current) {
         // redirect to login page if not logged in and trying to access a restricted page
-        var restrictedPage = $.inArray($location.path(), ['/','/login', '/userpage']) === -1;
+        var restrictedPage = $.inArray($location.path(), ['/login','/bloglist']) === -1;
         console.log("restrictedPage:" +restrictedPage)
         var loggedIn = $rootScope.currentUser.userId;
         console.log("loggedIn:" +loggedIn)
@@ -81,7 +84,7 @@ app.run( function ($rootScope, $location,$cookieStore, $http){
         else
         	{
         		var role= $rootScope.currentUser.role;
-        		var userRestrictedPage=  $.inArray($location.path(), ['/bloglist']) == 0;
+        		var userRestrictedPage=  $.inArray($location.path(), ['/userlist']) == 0;
         		
         		if(userRestrictedPage && role!='admin')
         			{

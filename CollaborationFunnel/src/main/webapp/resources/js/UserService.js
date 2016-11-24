@@ -16,6 +16,17 @@
 				);
 			}, 
 			
+			myProfile: function(){
+				return $http.get(BASE_URL+'/myProfile')
+				.then(
+					function(response){
+						$rootScope.selectedUser = response.data;
+						return response.data;
+					},
+					null
+				);
+			},
+			
 				logout: function(){
 					console.log('logout....')
 					return $http.get(BASE_URL+'/user/logout')
