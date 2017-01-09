@@ -21,7 +21,6 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	public void addUser(User user) {
-		user.setRole("user");
 		sessionFactory.getCurrentSession().save(user);
 	}
 

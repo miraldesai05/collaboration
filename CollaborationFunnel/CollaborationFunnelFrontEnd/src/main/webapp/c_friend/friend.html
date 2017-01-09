@@ -3,13 +3,22 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<style>
+body{
+	padding-top: 70px; 
+}
+</style>
 </head>
 <body>
 <div class="container" ng-controller="FriendController as ctr"> 
 <input type="submit" ng-click="ctr.getMyFriend()" class="btn btn-primary" value="get Friend"/>  
-<div ng-repeat="friend in ctr.friend | filter: sear_text">
+<div ng-repeat="friend in ctr.friend">
 <div class="container" ng-controller="UserController as ctrl">
 <div ng-hide="currentUser.userId !== friend.friendId">
+<!-- <p ng-if="user.isOnline == 'Y'"><img style="height:10px;width:10px;" src="resources/images/g2n3G3A.png" > <span> Online</span> 
+</p>
+<p ng-if="user.isOnline == 'N'"><img style="height:10px;width:10px;" src="resources/images/Offline_dot.png"><span> Offline </span><span class="pull right"></span>
+</p> -->
 <p>friend Id: {{friend.userId}} &nbsp;&nbsp;&nbsp;Status: {{friend.status}}
 <!-- <input type="submit" ng-click="ctr.unFriend(friend.userId)" class="btn btn-warning" value="unfriend"/> -->
 <a href="#/chat"><input type="submit" class="btn btn-warning" value="Send Message"/></a>

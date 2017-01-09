@@ -25,7 +25,6 @@ app.controller('UserController', ['$http','$scope','$cookieStore','User','UserSe
         console.log("MyProfile...")
     	UserService.myProfile().then(function(d){
    				ob.user = d;
-   				$location.path("/myProfile");
    			},function(errResponse){
    				console.error('Error while fetch profile');
     	});
@@ -34,19 +33,73 @@ app.controller('UserController', ['$http','$scope','$cookieStore','User','UserSe
     ob.addUser = function(){
 	console.log('Inside save');
 	if($scope.userForm.$valid) {
-	  ob.user.$save(function(user){
-	     console.log(user); 
-	     ob.flag= 'created';	
+		
+		var name=$scope.name;
+		var email=$scope.email;
+		var address=$scope.address;
+		var mobile=$scope.mobile;
+		var role=$scope.role;
+		var username=$scope.username;
+		var password=$scope.password;
+		var isOnline=$scope.isOnline;
+		var file = $scope.myFile;
+		
+		ob.flag= 'created';	
+		     ob.reset();	
+		     ob.fetchAllUsers();
+		
+		var uploadUrl = "http://localhost:8085/CollaborationFunnelBackEnd/user";
+		var fd = new FormData();
+		fd.append('file', file);
+		fd.append('name', name);
+		fd.append('email', email);
+		fd.append('address', address);
+		fd.append('mobile', mobile);
+		fd.append('username', username);
+		fd.append('password', password);
+		
+		$http.post(uploadUrl, fd, {
+			transformRequest : angular.identity,
+			headers : {
+			'Content-Type' : undefined
+			}
+			}).success(function() {
+			console.log('success');
+			}).error(function() {
+			console.log('error');
+			});
+		
+		 ob.flag= 'created';	
 	     ob.reset();	
-	     ob.fetchAllUsers();
-	  },
+	     ob.fetchAllUsers();	
+	  }},
 	  function(err){
 	     console.log(err.status);
-	     ob.flag='failed';
-	  }
-          );
-        }
+	     ob.flag='failed';  
     }; 
+    ob.updateUser = function(){
+    	console.log('Inside save');
+    		
+    		var file = $scope.myFile;
+    		var uploadUrl = "http://localhost:8085/CollaborationFunnelBackEnd/userupdate";
+    		var fd = new FormData();
+    		fd.append('file', file);
+    		
+    		$http.post(uploadUrl, fd, {
+    			transformRequest : angular.identity,
+    			headers : {
+    			'Content-Type' : undefined
+    			}
+    			}).success(function() {
+    			console.log('success');
+    			}).error(function() {
+    			console.log('error');
+    			});	
+    	  },
+    	  function(err){
+    	     console.log(err.status);
+    	     ob.flag='failed';  
+        }; 
     ob.editUser = function(userId){
 	    console.log('Inside edit');
             ob.user = User.get({ userId: userId}, function() {
@@ -68,9 +121,9 @@ app.controller('UserController', ['$http','$scope','$cookieStore','User','UserSe
     ob.deleteUser = function(userId){
 	    console.log('Inside delete');
 	    ob.user = User.delete({ userId: userId}, function() {
-		ob.reset();  
+		/*ob.reset(); */ 
 		ob.flag = 'deleted';
-    		ob.fetchAllUsers(); 
+    	ob.fetchAllUsers(); 
 	    });
     };		
     ob.reset = function(){
@@ -90,6 +143,7 @@ app.controller('UserController', ['$http','$scope','$cookieStore','User','UserSe
     				function(d){
     					
     					ob.user = d;
+    					console.log("username"+ob.user.username)
     					console.log("user.errorcode:" + ob.user.errorCode)
     					if(ob.user.errorCode == "404")
     						{
@@ -131,4 +185,19 @@ app.controller('UserController', ['$http','$scope','$cookieStore','User','UserSe
     		ob.authenticate(ob.user);
     	}
     };
-}]);     
+}]);   
+app.directive('fileModel', ['$parse', function ($parse) {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+            var model = $parse(attrs.fileModel);
+            var modelSetter = model.assign;
+            
+            element.bind('change', function(){
+                scope.$apply(function(){
+                    modelSetter(scope, element[0].files[0]);
+                });
+            });
+        }
+    };
+}]);

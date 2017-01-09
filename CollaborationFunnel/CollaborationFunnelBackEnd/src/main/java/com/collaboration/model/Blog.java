@@ -52,8 +52,4 @@ public class Blog {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	public String toString()
-	{
-			return "{blogId:'"+ blogId +"'," + "title:'"+ title +"'," + "description:'"+ description +"'," + "userId:'"+ userId +"'}";
-	}
 }

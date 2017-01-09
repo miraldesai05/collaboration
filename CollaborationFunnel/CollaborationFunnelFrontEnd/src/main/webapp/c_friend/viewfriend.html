@@ -3,6 +3,11 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<style>
+body{
+	padding-top: 70px; 
+}
+</style>
 </head>
 <body>
 <div class="container" ng-controller="FriendController as ctrl">
@@ -10,7 +15,7 @@
 <div ng-hide="currentUser.userId !== friend.userId"> 
 <input type="submit" ng-click="ctrl.getMyFriends()" class="btn btn-danger" value="Get My Friends"/>
 </div>
-<div ng-repeat="friend in ctrl.friend | filter: sear_text">
+<div ng-repeat="friend in ctrl.friend">
 <div ng-hide="currentUser.userId !== friend.userId"> 
 <p>friend Id: {{friend.friendId}} &nbsp;&nbsp;&nbsp;Status: {{friend.status}}
 <!-- <input type="submit" ng-click="ctrl.unFriend(friend.userId)" class="btn btn-warning" value="unfriend"/> -->

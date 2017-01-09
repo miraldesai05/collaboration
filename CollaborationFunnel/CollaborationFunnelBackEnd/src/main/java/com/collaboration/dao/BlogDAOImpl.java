@@ -62,19 +62,4 @@ public class BlogDAOImpl implements BlogDAO {
 		sessionFactory.getCurrentSession().update(b);
 		
 	}
-
-	public Blog view(int blogId) {
-		
-		String hql = "from Blog where blogID=" + "'" + blogId + "'";
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-
-		@SuppressWarnings("unchecked")
-		List<Blog> listBlog = (List<Blog>) query.list();
-
-		if (listBlog != null && !listBlog.isEmpty()) {
-			return listBlog.get(0);
-		}
-		return null;
-	}
-
 }

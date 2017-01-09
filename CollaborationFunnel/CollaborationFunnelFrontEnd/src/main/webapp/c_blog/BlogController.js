@@ -7,7 +7,7 @@ app.factory('Blog', ['$resource', function ($resource) {
 	}
     );
 }]);
-app.controller('BlogController', ['$scope', 'Blog','BlogService','$location', function($scope, Blog, BlogService, $location) {
+app.controller('BlogController', ['$scope', 'Blog','$location', function($scope, Blog, $location) {
     var ob = this;
     ob.blogs=[];
     ob.blog = new Blog(); 
@@ -37,20 +37,6 @@ app.controller('BlogController', ['$scope', 'Blog','BlogService','$location', fu
 	       ob.flag = 'edit'; 
 	    });
     };
-    ob.getSelectedBlog = getBlog
-     function getBlog(blogId){
-    	console.log("->getting blog:" +blogId)
-    	BlogService.getBlog(blogId)
-    		.then(
-    				function(d){
-    					ob.blog = d;
-    					$location.path('/blogview');
-    				},
-    				function(errResponse){
-    					console.error('Eror while fetching Blogs');
-    				}
-    		);
-    };
     ob.updateBlogDetail = function(){
 	console.log('Inside update');
 	if($scope.blogForm.$valid) {
@@ -63,6 +49,12 @@ app.controller('BlogController', ['$scope', 'Blog','BlogService','$location', fu
            });
 	}
     };	
+    ob.viewBlog = function(blogId){
+    	console.log('Inside view');
+    	ob.viewblog = Blog.get({ blogId: blogId}, function(){
+    		ob.flag = 'view';
+    	});
+    };
     ob.deleteBlog = function(blogId){
 	    console.log('Inside delete');
 	    ob.blog = Blog.delete({ blogId: blogId}, function() {
@@ -79,5 +71,8 @@ app.controller('BlogController', ['$scope', 'Blog','BlogService','$location', fu
 	    ob.blog = new Blog();
 	    ob.flag= '';	
    	    ob.fetchAllBlogs();
-    };    
+    }; 
+    ob.close = function(){
+    	location.reload();
+    };
 }]);     

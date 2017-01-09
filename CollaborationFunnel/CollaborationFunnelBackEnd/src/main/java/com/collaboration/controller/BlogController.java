@@ -2,6 +2,8 @@ package com.collaboration.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,10 +33,12 @@ public class BlogController {
 	}
 	
 	@RequestMapping(value="/blog", method=RequestMethod.POST)
-	public ResponseEntity<Blog> createBlog(@RequestBody Blog blog){
+	public ResponseEntity<Blog> createBlog(@RequestBody Blog blog, HttpSession session){
 		
 		if(blogService.get(blog.getBlogId())== null)
 		{
+			int loggedInUserID = (Integer)session.getAttribute("loggedInUserId");
+			blog.setUserId(loggedInUserID);
 			blogService.addBlog(blog);
 			return new ResponseEntity<Blog>(blog,HttpStatus.OK);
 		}
@@ -55,14 +59,15 @@ public class BlogController {
 	}
 	
 	@RequestMapping(value="/blog/{blogId}", method=RequestMethod.GET)
-	public ResponseEntity<Blog> getBlog(@PathVariable("blogId") int blogId)
+	public ResponseEntity<Blog> getBlog(@PathVariable("blogId") int blogId, HttpSession session)
 	{
 		Blog blog=blogService.get(blogId);
-		if(blog==null)
+		session.setAttribute("bId", blog.getBlogId());
+		/*if(blog==null)
 		{
 			blog=new Blog();
 			return new ResponseEntity<Blog>(blog,HttpStatus.NOT_FOUND);
-		}
+		}*/
 		return new ResponseEntity<Blog>(blog,HttpStatus.OK);
 	}
 	
@@ -77,4 +82,5 @@ public class BlogController {
 		blogService.updateBlog(blog);
 		return new ResponseEntity<Blog>(blog,HttpStatus.OK);
 	}
+	
 }

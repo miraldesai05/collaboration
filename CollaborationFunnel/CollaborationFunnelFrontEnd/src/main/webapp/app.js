@@ -30,22 +30,38 @@ var app = angular.module('app', ['ngRoute','ngResource','ngCookies']);
             
             .when('/bloglist', {
                 controller: 'BlogController',
+                controller: 'BlogCommentController',
+                controller: 'BlogLikeController',
                 templateUrl: 'c_blog/bloglist.html'
             })
-              
-            .when('/userlist', {
-                controller: 'UserController',
-                templateUrl: 'c_user/userlist.html'
+            
+            .when('/forumpage', {
+                controller: 'ForumController',
+                templateUrl: 'c_forum/forum.html'
             })
             
-            .when('/myProfile', {
+            .when('/forumlist', {
+                controller: 'ForumController',
+                controller: 'ForumMemberController',
+                controller: 'ForumCommentController',
+                controller: 'ForumLikeController',
+                templateUrl: 'c_forum/forumlist.html'
+            })
+              
+            .when('/admin', {
                 controller: 'UserController',
-                templateUrl: 'c_user/profile.html'
+                controller: 'JobController',
+                templateUrl: 'c_admin/admin.html'
             })
             
             .when('/eventpage', {
                 controller: 'EventController',
                 templateUrl: 'c_event/event.html'
+            })
+            
+             .when('/searchfriend', {
+                controller: 'FriendController',
+                templateUrl: 'c_friend/searchfriend.html'
             })
             
             .when('/friend', {
@@ -67,11 +83,23 @@ var app = angular.module('app', ['ngRoute','ngResource','ngCookies']);
                 templateUrl: 'c_chat/chat.html'
             })
             
-            .when('/blogview', {
-                controller: 'BlogController',
-                templateUrl: 'c_blog/viewblog.html'
-            })
- 
+            /*.when('/jobpage', {
+            	controller: 'JobController',
+            	templateUrl: 'c_job/job.html',
+        
+            })*/
+		    .when('/joblist', {
+		        controller: 'JobController',
+		        controller: 'JobApplicationController',
+		        templateUrl: 'c_job/joblist.html',
+		        
+		    })
+		    .when('/viewappliedjob', {
+		         controller: 'JobApplicationController',
+		         templateUrl: 'c_job/viewappliedjob.html',
+		        
+		     })
+		    
            .otherwise({ redirectTo: '/' });
     });
    
@@ -93,15 +121,13 @@ app.run( function ($rootScope, $location,$cookieStore, $http){
         else
         	{
         		var role= $rootScope.currentUser.role;
-        		var userRestrictedPage=  $.inArray($location.path(), ['/userlist']) == 0;
-        		
+        		var userRestrictedPage = $.inArray($location.path(), ['/admin']) == 0;
         		if(userRestrictedPage && role!='admin')
-        			{
+        		{
         				alert("You can not do this operation as you are logged as :" + role);
         				$location.path('/');
-        			}
-        	}
-        
+        		}
+        	}  
     });
 	
     // keep user logged in after page refresh

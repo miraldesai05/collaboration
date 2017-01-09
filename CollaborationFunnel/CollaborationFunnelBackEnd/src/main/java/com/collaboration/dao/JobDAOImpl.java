@@ -1,15 +1,14 @@
-/*package com.collaboration.dao;
+package com.collaboration.dao;
 
 import java.util.List;
 
-import org.hibernate.HibernateException;
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.collaboration.model.Job;
-import com.collaboration.model.JobApplication;
 
 @Repository("jobDAO")
 public class JobDAOImpl implements JobDAO {
@@ -21,7 +20,48 @@ public class JobDAOImpl implements JobDAO {
 		this.sessionFactory = sessionFactory;
 	}
 
-	public boolean postJob(Job job) {
+	public void addJob(Job job) {
+		sessionFactory.getCurrentSession().save(job);	
+	}
+
+	public List<Job> listJob() {
+		@SuppressWarnings("unchecked")
+		List<Job> listJob = (List<Job>)sessionFactory.getCurrentSession().createCriteria(Job.class)
+				.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+		return listJob;
+	}
+
+	public void delete(int jobId) {
+		Job jobToDelete = new Job();
+		jobToDelete.setJobId(jobId);
+		sessionFactory.getCurrentSession().delete(jobToDelete);	
+	}
+
+	public Job get(int jobId) {
+
+		String hql = "from Job where jobID=" + "'" + jobId + "'";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+
+		@SuppressWarnings("unchecked")
+		List<Job> listJob = (List<Job>) query.list();
+
+		if (listJob != null && !listJob.isEmpty()) {
+			return listJob.get(0);
+		}
+		return null;
+	}
+
+	public void updateJob(Job job) {
+		Job j =get(job.getJobId());
+		j.setTitle(job.getTitle());
+		j.setDescription(job.getDescription());
+		j.setQualification(job.getQualification());
+		j.setStatus(job.getStatus());
+		sessionFactory.getCurrentSession().update(j);
+		
+	}
+
+	/*public boolean postJob(Job job) {
 		try {
 			sessionFactory.getCurrentSession().save(job);
 		} catch (HibernateException e) {
@@ -75,7 +115,7 @@ public class JobDAOImpl implements JobDAO {
 	}
 
 	public JobApplication getMyAppliedJobs(int userId) {
-		String hql="from JobApplication where userId= '"+userId+"'";
+		String hql="from Job where userId in (select userId from JobApplication where userId= '"+userId+"')";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		return (JobApplication)query.list();
 		
@@ -87,5 +127,21 @@ public class JobDAOImpl implements JobDAO {
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		return query.list();	
 	}
+
+	@SuppressWarnings("unchecked")
+	public List<JobApplication> listJobApplication() {
+		String hql="from JobApplication";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		return query.list();
+	}
+
+	public Job getJobDetails(int jobId) {
+		return (Job) sessionFactory.getCurrentSession().get(Job.class, jobId);
+	}
+
+	public JobApplication getJobApplication(int userId) {
+		String hql="from JobApplication where userId= '"+userId+"'";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		return (JobApplication)query.list();
+	}*/
 }
-*/

@@ -15,7 +15,8 @@ app.controller('FriendController', ['$scope','FriendService','UserService','$loc
 			role : '',
 			username :'',
 			password :'',
-			errorMessage :''
+			errorMessage :'',
+			isOnline:''
 			};
 	ob.users = [];
 	 

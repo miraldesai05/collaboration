@@ -44,5 +44,6 @@
     <property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	<bean class="com.collaboration.model.Friend" id="Friend"/>
-		
+	<bean class="com.collaboration.model.JobApplication" id="JobApplication"/>
+	<bean class="com.collaboration.model.Job" id="Job"/>
 </beans>

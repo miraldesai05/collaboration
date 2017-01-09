@@ -1,4 +1,4 @@
-/*package com.collaboration.model;
+package com.collaboration.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="C_Job_Applicaton")
+@Table(name="C_JobApplication")
 public class JobApplication {
 	
 	@Id
@@ -15,7 +15,7 @@ public class JobApplication {
 	private int jobApplicationId;
 	private int userId;
 	private int jobId;
-	private String dateApplied;
+	/*private String dateApplied;*/
 	private char status;
 	
 	public int getJobApplicationId() {
@@ -36,12 +36,12 @@ public class JobApplication {
 	public void setJobId(int jobId) {
 		this.jobId = jobId;
 	}
-	public String getDateApplied() {
+	/*public String getDateApplied() {
 		return dateApplied;
 	}
 	public void setDateApplied(String dateApplied) {
 		this.dateApplied = dateApplied;
-	}
+	}*/
 	public char getStatus() {
 		return status;
 	}
@@ -49,4 +49,3 @@ public class JobApplication {
 		this.status = status;
 	}
 }
-*/

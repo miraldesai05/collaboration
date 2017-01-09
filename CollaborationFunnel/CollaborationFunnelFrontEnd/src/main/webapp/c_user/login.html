@@ -23,6 +23,9 @@ $(function() {
 });
 </script>
 <style>
+body{
+     padding-top: 90px; 
+}
 	.msg-val {
 	color: red;
 	}
@@ -239,30 +242,33 @@ label {
               <form id="register-form" ng-controller="UserController as userCtrl" name="userForm" ng-submit="userCtrl.addUser()" role="form" method="POST" style="display: none;">
                 <h2>REGISTER</h2>
                   <div class="form-group">
-                    <input type="text" name="name" ng-model="userCtrl.user.name" required tabindex="1" class="form-control" placeholder="Name" value="">
+                    <input type="text" name="name" ng-model="name" required tabindex="1" class="form-control" placeholder="Name" value="">
                     <span ng-show="userForm.name.$error.required" class="msg-val">Name is required.</span> 
                   </div>
                   <div class="form-group">
-                    <input type="email" name="email" ng-model="userCtrl.user.email" required tabindex="1" class="form-control" placeholder="Email Address" value="">
+                    <input type="email" name="email" ng-model="email" required tabindex="1" class="form-control" placeholder="Email Address" value="">
                     <span ng-show="userForm.email.$error.required" class="msg-val">Email Address is required.</span>
                   </div>
                   <div class="form-group">
-                    <textarea class="form-control" name="address" ng-model="userCtrl.user.address" required tabindex="1" rows="5" placeholder="Address"></textarea>
+                    <textarea class="form-control" name="address" ng-model="address" required tabindex="1" rows="5" placeholder="Address"></textarea>
                     <span ng-show="userForm.address.$error.required" class="msg-val">Address is required.</span>
                   </div>
                   <div class="form-group">
-                    <input type="text" name="mobile" ng-model="userCtrl.user.mobile" required tabindex="1" class="form-control" placeholder="Mobile Number">
+                    <input type="text" pattern="[0-9]{10}" title="Enter a 10 digit number" name="mobile" ng-model="mobile" required tabindex="1" class="form-control" placeholder="Mobile Number">
                     <span ng-show="userForm.mobile.$error.required" class="msg-val">Mobile Number is required.</span>
                   </div>  
                   <div class="form-group">
-                    <input type="text" name="username" ng-model="userCtrl.user.username" required tabindex="1" class="form-control" placeholder="Username">
+                    <input type="text" name="username" ng-model="username" required tabindex="1" class="form-control" placeholder="Username">
                     <span ng-show="userForm.username.$error.required" class="msg-val">Username is required.</span> 
                   </div>
                   <div class="form-group">
-                    <input type="password" name="password" ng-model="userCtrl.user.password" required tabindex="1" class="form-control" placeholder="Password">
+                    <input type="password" pattern=".{6,8}" title="Six to eight characters" name="password" ng-model="password" required tabindex="1" class="form-control" placeholder="Password">
                     <span ng-show="userForm.password.$error.required" class="msg-val">Password is required.</span>
                   </div>
-                  <input type="hidden" ng-model="userCtrl.user.role" /><br> 
+                  <input type="hidden" ng-model="role" /><br> 
+				<div class="form-group">
+ 					<input type="file" file-model="myFile" name="image"/>
+ 				</div>
                   <div class="form-group">
                     <div class="row">
                       <div class="col-sm-6 col-sm-offset-3">
