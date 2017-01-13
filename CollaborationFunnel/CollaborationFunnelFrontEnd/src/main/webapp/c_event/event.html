@@ -80,9 +80,7 @@ body{
                 <th>Venue</th>
                 <th>Description</th>
                 <th>Date</th>
-                <!-- <div ng-controller="UserController">
-                <th ng-hide="currentUser.userId !==eventCtrl.events.userId">Action</th>
-                </div> -->
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -92,9 +90,7 @@ body{
 	        	<td><span ng-bind="row.venue"></span></td>
 	         	<td><span ng-bind="row.description"></span></td>
 	         	<td><span ng-bind="row.dateTime"></span></td>
-	         	<div ng-controller="UserController">
-                <td ng-hide="currentUser.userId !==row.userId"><a href="" ng-click="eventCtrl.editEvent(row.eventId)">edit</a> | <a href="" ng-click="eventCtrl.deleteEvent(row.eventId)">delete</a></td>
-                </div>
+                <td> <a href="" ng-click="eventCtrl.editEvent(row.eventId)">edit</a> | <a href="" ng-click="eventCtrl.deleteEvent(row.eventId)">delete</a></td>
                 <span ng-if="eventCtrl.flag=='updated' && row.eventId==eventCtrl.updatedId" class="msg-success">Event successfully updated.</span> 
             </tr>
         </tbody>

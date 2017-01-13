@@ -71,9 +71,7 @@ body{
             	<th>Id</th>
                 <th>Title</th>
                 <th>Description</th>
-                <!-- <div ng-controller="UserController">
-                <th ng-hide="currentUser.userId !==forumCtrl.forums.userId">Action</th>
-                </div> -->
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -81,9 +79,7 @@ body{
             	<td><span ng-bind="row.forumId"></span></td>
 	        	<td><span ng-bind="row.title"></span></td>
 	         	<td><span ng-bind="row.description"></span></td>
-	         	<div ng-controller="UserController">
-                <td ng-hide="currentUser.userId !==row.userId"><a href="" ng-click="forumCtrl.editForum(row.forumId)">edit</a> | <a href="" ng-click="forumCtrl.deleteForum(row.forumId)">delete</a></td>
-                </div>
+                <td> <a href="" ng-click="forumCtrl.editForum(row.forumId)">edit</a> | <a href="" ng-click="forumCtrl.deleteForum(row.forumId)">delete</a></td>
                 <span ng-if="forumCtrl.flag=='updated' && row.forumId==forumCtrl.updatedId" class="msg-success">Forum successfully updated.</span> 
             </tr>
         </tbody>
