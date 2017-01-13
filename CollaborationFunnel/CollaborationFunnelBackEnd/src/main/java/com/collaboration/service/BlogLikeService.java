@@ -16,9 +16,15 @@ public class BlogLikeService {
 	@Autowired
 	public BlogLikeDAOImpl blogLikeDAOImpl;
 	
-	public void addBlogLike(BlogLike blogLike)
-	{
-		blogLikeDAOImpl.addBlogLike(blogLike);
+	public boolean addBlogLike(BlogLike blogLike)
+	{ 
+		if (blogLikeDAOImpl.blogLikeExists(blogLike.getBlogId(), blogLike.getUserId())) {
+	           return false;
+        } else {
+        	blogLikeDAOImpl.addBlogLike(blogLike);	
+	           return true;
+        }
+        
 	}
 	public void delete(int blogLikeId)
 	{

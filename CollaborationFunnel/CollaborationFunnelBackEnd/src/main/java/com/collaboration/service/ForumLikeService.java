@@ -16,9 +16,15 @@ public class ForumLikeService {
 	@Autowired
 	public ForumLikeDAOImpl forumLikeDAOImpl;
 	
-	public void addForumLike(ForumLike forumLike)
+	public boolean addForumLike(ForumLike forumLike)
 	{
-		forumLikeDAOImpl.addForumLike(forumLike);
+		if (forumLikeDAOImpl.forumLikeExists(forumLike.getForumId(), forumLike.getUserId())) {
+	           return false;
+     } else {
+    	 forumLikeDAOImpl.addForumLike(forumLike);
+	           return true;
+     }
+		
 	}
 	public void delete(int forumLikeId)
 	{

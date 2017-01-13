@@ -19,8 +19,9 @@ public class ForumLikeDAOImpl implements ForumLikeDAO {
 		this.sessionFactory = sessionFactory;
 	}
 
-	public void addForumLike(ForumLike forumLike) {
+	public boolean addForumLike(ForumLike forumLike) {
 		sessionFactory.getCurrentSession().save(forumLike);
+		return false;
 		
 	}
 
@@ -50,6 +51,15 @@ public class ForumLikeDAOImpl implements ForumLikeDAO {
 		@SuppressWarnings("unchecked")
 		List<ForumLike> list = (List<ForumLike>)query.list();
 		return list;
+	}
+
+	public boolean forumLikeExists(int forumId, int userId) {
+		String hql = "FROM ForumLike where forumId = '" + forumId + "' and userId = '" + userId + "'";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+
+		@SuppressWarnings("unchecked")
+		List<ForumLike> listForumLike = (List<ForumLike>) query.list();
+		return listForumLike.size() > 0 ? true : false; 
 	}
 
 }

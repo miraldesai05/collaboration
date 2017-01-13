@@ -18,4 +18,5 @@ public class ChatController {
 	{
 		return new OutputMessage(message, new Date());
 	}
+	
 }

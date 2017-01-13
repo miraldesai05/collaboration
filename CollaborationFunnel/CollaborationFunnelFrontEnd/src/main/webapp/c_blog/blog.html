@@ -71,7 +71,9 @@ body{
             	<th>Id</th>
                 <th>Title</th>
                 <th>Description</th>
-                <th>Action</th>
+                <!-- <div ng-controller="UserController">
+                <th ng-hide="currentUser.userId !==blogCtrl.blogs.userId">Action</th>
+                </div> -->
             </tr>
         </thead>
         <tbody>
@@ -79,7 +81,9 @@ body{
             	<td><span ng-bind="row.blogId"></span></td>
 	        	<td><span ng-bind="row.title"></span></td>
 	         	<td><span ng-bind="row.description"></span></td>
-                <td> <a href="" ng-click="blogCtrl.editBlog(row.blogId)">edit</a> | <a href="" ng-click="blogCtrl.deleteBlog(row.blogId)">delete</a></td>
+	         	<div ng-controller="UserController">
+                <td ng-hide="currentUser.userId !==row.userId"><a href="" ng-click="blogCtrl.editBlog(row.blogId)">edit</a> | <a href="" ng-click="blogCtrl.deleteBlog(row.blogId)">delete</a></td>
+                </div>
                 <span ng-if="blogCtrl.flag=='updated' && row.blogId==blogCtrl.updatedId" class="msg-success">Blog successfully updated.</span> 
             </tr>
         </tbody>

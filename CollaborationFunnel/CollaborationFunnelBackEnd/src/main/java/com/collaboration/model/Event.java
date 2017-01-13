@@ -17,6 +17,7 @@ public class Event {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int eventId;
+	private int userId;
 	private String name;
 	private String venue;
 	private String description;
@@ -28,6 +29,12 @@ public class Event {
 	}
 	public void setEventId(int eventId) {
 		this.eventId = eventId;
+	}
+	public int getUserId() {
+		return userId;
+	}
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 	public String getName() {
 		return name;

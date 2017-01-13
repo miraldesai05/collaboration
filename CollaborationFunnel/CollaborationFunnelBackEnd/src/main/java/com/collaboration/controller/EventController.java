@@ -2,6 +2,8 @@ package com.collaboration.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,10 +33,12 @@ public class EventController {
 	}
 	
 	@RequestMapping(value="/event", method=RequestMethod.POST)
-	public ResponseEntity<Event> createEvent(@RequestBody Event event){
+	public ResponseEntity<Event> createEvent(@RequestBody Event event, HttpSession session){
 		
 		if(eventService.get(event.getEventId())== null)
 		{
+			int loggedInUserID = (Integer)session.getAttribute("loggedInUserId");
+			event.setUserId(loggedInUserID);
 			eventService.addEvent(event);
 			return new ResponseEntity<Event>(event,HttpStatus.OK);
 		}

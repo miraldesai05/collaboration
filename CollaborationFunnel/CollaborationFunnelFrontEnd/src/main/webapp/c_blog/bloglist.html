@@ -67,7 +67,7 @@ body{
            </br>
            <div ng-controller="BlogCommentController as blogCommentCtrl">
            <input type="submit" ng-click="blogCommentCtrl.fetchAllBlogComments()" class="btn btn-primary" value="View comments"/>
-           		No. of comments {{blogCommentCtrl.blogcomments.length}}	</br>
+           		<!-- No. of comments {{blogCommentCtrl.blogcomments.length}} -->	</br>
            		<table class="table table-bordered">
 			        <!-- <thead>
 			            <tr>
@@ -85,7 +85,9 @@ body{
 				        	<td>User Id: <span ng-bind="row.userId"></span></td>
 				         	<td><span ng-bind="row.blogCommentContent"></span></td>
 				         	<!-- <td><span ng-bind="row.blogId"></span></td> -->
-			                <td><input type="submit" ng-click="blogCommentCtrl.deleteBlogComment(row.blogCommentId)" class="btn btn-primary" value="Delete"/></td>
+				         	<div ng-controller="UserController">
+			                <td ng-hide="currentUser.userId!==row.userId"><input type="submit" ng-click="blogCommentCtrl.deleteBlogComment(row.blogCommentId)" class="btn btn-primary" value="Delete"/></td> 
+			            	</div>
 			            </tr>
 			        </tbody>
 			    </table>	

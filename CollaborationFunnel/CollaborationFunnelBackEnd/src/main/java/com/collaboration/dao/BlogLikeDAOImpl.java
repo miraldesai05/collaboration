@@ -19,9 +19,9 @@ public class BlogLikeDAOImpl implements BlogLikeDAO {
 		this.sessionFactory = sessionFactory;
 	}
 
-	public void addBlogLike(BlogLike blogLike) {
+	public boolean addBlogLike(BlogLike blogLike) {
 		sessionFactory.getCurrentSession().save(blogLike);
-		
+		return false;	
 	}
 
 	public void delete(int blogLikeId) {
@@ -51,5 +51,14 @@ public class BlogLikeDAOImpl implements BlogLikeDAO {
 		@SuppressWarnings("unchecked")
 		List<BlogLike> list = (List<BlogLike>)query.list();
 		return list;
+	}
+
+	public boolean blogLikeExists(int blogId, int userId) {
+		String hql = "FROM BlogLike where blogId = '" + blogId + "' and userId = '" + userId + "'";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+
+		@SuppressWarnings("unchecked")
+		List<BlogLike> listBlogLike = (List<BlogLike>) query.list();
+		return listBlogLike.size() > 0 ? true : false; 
 	}
 }

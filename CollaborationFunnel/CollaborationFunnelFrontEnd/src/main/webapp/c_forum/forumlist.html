@@ -71,8 +71,10 @@ body{
 			            <tr ng-repeat="row in forumMemberCtrl.forummembers">
 			            	<!-- <td><span ng-bind="row.forumMemberId"></span></td> -->
 				        	<td>User Id: <span ng-bind="row.userId"></span></td>
-				         	<td>Forum Id:<span ng-bind="row.forumId"></span></td>
-			                <td><input type="submit" ng-click="forumMemberCtrl.deleteForumMember(row.forumMemberId)" class="btn btn-primary" value="Delete"/></td>
+				         	<!-- <td>Forum Id:<span ng-bind="row.forumId"></span></td> -->
+				         	<div ng-controller="UserController">
+			                <td ng-hide="currentUser.userId!==row.userId"><input type="submit" ng-click="forumMemberCtrl.deleteForumMember(row.forumMemberId)" class="btn btn-primary" value="Delete"/></td>
+			            	</div>
 			            </tr>
 			        </tbody>
 			    </table> 		
@@ -95,7 +97,7 @@ body{
            </br>
            <div ng-controller="ForumCommentController as forumCommentCtrl">
            <input type="submit" ng-click="forumCommentCtrl.fetchAllForumComments()" class="btn btn-primary" value="View comments"/>
-           				No. of comments {{forumCommentCtrl.forumcomments.length}}</br>
+           				<!-- No. of comments {{forumCommentCtrl.forumcomments.length}} --></br>
            		<table class="table table-bordered">
 			        <!-- <thead>
 			            <tr>
@@ -113,7 +115,9 @@ body{
 				        	<td>User Id: <span ng-bind="row.userId"></span></td>
 				         	<td><span ng-bind="row.forumCommentContent"></span></td>
 				         	<!-- <td><span ng-bind="row.forumId"></span></td> -->
-			                <td><input type="submit" ng-click="forumCommentCtrl.deleteForumComment(row.forumCommentId)" class="btn btn-primary" value="Delete"/></td>
+				         	<div ng-controller="UserController">
+			                <td ng-hide="currentUser.userId!==row.userId"><input type="submit" ng-click="forumCommentCtrl.deleteForumComment(row.forumCommentId)" class="btn btn-primary" value="Delete"/></td>
+			            	</div>
 			            </tr>
 			        </tbody>
 			    </table> 		
